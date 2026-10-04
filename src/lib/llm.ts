@@ -9,6 +9,8 @@ import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { z } from "zod";
 import { TODAY } from "./dates";
 
+const TODAY_LABEL = `Friday ${TODAY}`;
+
 export type Provider = "groq" | "anthropic";
 type Tier = "fast" | "strong";
 
@@ -70,7 +72,17 @@ async function groqChat(body: Record<string, unknown>): Promise<string> {
   return j.choices?.[0]?.message?.content ?? "";
 }
 
+/** One retry, and the fast tier falls back to the strong tier, when output fails schema validation. */
 async function structured<S extends z.ZodType>(tier: Tier, system: string, user: string, schema: S, name: string, maxTokens: number): Promise<z.infer<S>> {
+  try {
+    return await structuredOnce(tier, system, user, schema, name, maxTokens);
+  } catch (e) {
+    if (e instanceof Error && /declined/.test(e.message)) throw e;
+    return structuredOnce("strong", system, user, schema, name, maxTokens);
+  }
+}
+
+async function structuredOnce<S extends z.ZodType>(tier: Tier, system: string, user: string, schema: S, name: string, maxTokens: number): Promise<z.infer<S>> {
   const p = provider();
   if (!p) throw new Error("Live mode is off: no API key is set on the server.");
   const model = MODEL_IDS[p][tier];
@@ -185,7 +197,7 @@ export type Extraction = z.infer<typeof ExtractSchema>;
 export async function extract(source: string, account: string) {
   return structured(
     "strong",
-    `You extract AtliQ's sales commitments into a fixed schema. Today is ${TODAY}. ` +
+    `You extract AtliQ's sales commitments into a fixed schema. Today is ${TODAY_LABEL}. Resolve weekday names against that date. ` +
       "Capture client asks needing AtliQ action, promises AtliQ people made, deadlines, revisit dates, referrals, cross-sell hints, budget and stakeholder facts. " +
       "Every item must carry at least one verbatim quote copied character for character from the source; an item without a quote is not allowed. " +
       "Vague dates ('mid-July', 'next week', 'Q2') become a window with approximate=true. " +

@@ -33,10 +33,24 @@ export async function POST(req: Request) {
   const context = `${sources.map((s) => `## ${s.title} (${s.id})\n${s.text}`).join("\n\n")}\n\n## Ledger for this account\n${ledger}`;
 
   try {
-    const text = await draftReply({ account: account.company, owner: item.owner === "Unassigned" ? "[blank: owner name]" : item.owner, ask: item.summary, context });
-    const draft = { id: `live-${item.id}`, item: item.id, account: item.account, model: models().drafts, text, sources: [...sourceIds] };
-    const safety = checkDraft(draft, m.accounts, m.sources);
-    return NextResponse.json({ text, model: models().drafts, safety });
+    const owner = item.owner === "Unassigned" ? "[blank: owner name]" : item.owner;
+    // Guardrail: a draft that names another client or states an unsupported amount is retried once
+    // with the reasons, and withheld if it still fails. Unsafe text is never returned.
+    let feedback: string | undefined;
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      const text = await draftReply({ account: account.company, owner, ask: item.summary, context, feedback });
+      const draft = { id: `live-${item.id}`, item: item.id, account: item.account, model: models().drafts, text, sources: [...sourceIds] };
+      const safety = checkDraft(draft, m.accounts, m.sources);
+      if (safety.ok) return NextResponse.json({ text, model: models().drafts, safety, attempts: attempt });
+      feedback = [
+        ...safety.unsupportedAmounts.map((a) => `it states the amount "${a}"`),
+        ...safety.foreignEntities.map((f) => `it names ${f}, another client`),
+      ].join("; ");
+    }
+    return NextResponse.json(
+      { error: `Draft withheld: it failed the safety check twice (${feedback}). Use the precomputed draft or write this one yourself.` },
+      { status: 422 },
+    );
   } catch (e) {
     return NextResponse.json({ error: e instanceof Error ? e.message : String(e) }, { status: 502 });
   }
