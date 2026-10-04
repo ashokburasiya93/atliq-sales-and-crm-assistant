@@ -1,0 +1,745 @@
+{
+  "_meta": {
+    "step": "F2 Commitment & Signal Ledger",
+    "model": "claude-sonnet-5-5",
+    "referenceDate": "2026-07-10",
+    "note": "Precomputed over the 50 dataset files with editorial notes stripped. Every quote is re-checked against the cleaned source at build time (scripts/verify.mts) and at runtime; any item whose quote is not found is dropped and logged. Owners, due dates, days waiting and overdue status are computed in code, not by the model."
+  },
+  "items": [
+    {
+      "id": "quantia-revisit", "account": "L-1035", "type": "revisit",
+      "summary": "Check back with James at Quantia: they asked AtliQ to return once their acquisition closes, likely Q2 2026.",
+      "owedBy": "AtliQ", "owedTo": "James Whitfield (Quantia)", "arose": "2025-09-30",
+      "due": { "text": "Q2 2026", "start": "2026-04-01", "end": "2026-06-30", "approximate": true },
+      "quotes": [
+        { "source": "2025-09-30_quantia_lost_deal", "text": "nothing new gets signed until that closes, likely Q2 2026" },
+        { "source": "2025-09-30_quantia_lost_deal", "text": "Please do check back with us around then. I mean that." }
+      ],
+      "status": "open", "opportunity": "Quantia (check back Q2 2026)", "confidence": 0.9
+    },
+    {
+      "id": "vertex-reconnect", "account": "L-1037", "type": "promise",
+      "summary": "Reconnect with Mr. Naidu at Vertex: Jay promised to follow up in February after his out-of-office.",
+      "owedBy": "AtliQ (Jay)", "owedTo": "P. Naidu (Vertex Constructions)", "arose": "2026-01-20",
+      "due": { "text": "in February", "start": "2026-02-02", "end": "2026-02-27", "approximate": true },
+      "quotes": [
+        { "source": "2026-01-15_vertex_ooo_stall", "text": "I am out of the office until 2 February 2026" },
+        { "source": "2026-01-15_vertex_ooo_stall", "text": "will reconnect in February" }
+      ],
+      "status": "open", "confidence": 0.85
+    },
+    {
+      "id": "bytebridge-proof", "account": "L-1031", "type": "promise",
+      "summary": "Send ByteBridge the two retention case studies and a reference Karandeep promised to counter TalentGrid's lower quote.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Fatima Al-Rashid (ByteBridge)", "arose": "2026-05-12",
+      "due": { "text": "by Friday", "start": "2026-05-15", "end": "2026-05-15" },
+      "quotes": [
+        { "source": "2026-05-10_bytebridge_competitor", "text": "TalentGrid has quoted us roughly 15% below your rates" },
+        { "source": "2026-05-10_bytebridge_competitor", "text": "I'll send both, plus a reference, by Friday." }
+      ],
+      "status": "open", "confidence": 0.95
+    },
+    {
+      "id": "finedge-compliance", "account": "L-1023", "type": "ask",
+      "summary": "FinEdge compliance asked for ISO 27001, data residency confirmation and subcontractor policy.",
+      "owedBy": "AtliQ (Bhavin)", "owedTo": "Suresh Menon (FinEdge)", "arose": "2026-03-26",
+      "quotes": [
+        { "source": "2026-03-26_finedge_compliance_docs", "text": "They need from you: ISO 27001 certificate, your data residency confirmation" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-03-30", "source": "2026-03-26_finedge_compliance_docs", "text": "all three documents attached" },
+      "confidence": 0.95
+    },
+    {
+      "id": "finedge-call-slot", "account": "L-1023", "type": "ask",
+      "summary": "Confirm your availability for FinEdge's commercial call: compliance cleared on 19 Jun and Suresh is waiting.",
+      "owedBy": "AtliQ (Bhavin)", "owedTo": "Suresh Menon (FinEdge)", "arose": "2026-06-19",
+      "quotes": [
+        { "source": "2026-03-26_finedge_compliance_docs", "text": "compliance has cleared AtliQ" },
+        { "source": "2026-03-26_finedge_compliance_docs", "text": "My assistant will find a slot the week of 29 June — please confirm your availability." },
+        { "source": "2026-07-07_internal_prioritization", "text": "biggest deal we have and it's been sitting three weeks" }
+      ],
+      "status": "open", "confidence": 0.97
+    },
+    {
+      "id": "healthfirst-phasing", "account": "L-1009", "type": "ask",
+      "summary": "Anita asked for the portal pricing split into two phases so the board can approve a smaller first amount.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Dr. Anita Rao (HealthFirst)", "arose": "2026-04-20",
+      "quotes": [
+        { "source": "2026-04-20_healthfirst_board_update", "text": "can you split the pricing into two phases so the initial approval amount is smaller?" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-04-22", "source": "2026-04-20_healthfirst_board_update", "text": "attached is a re-phased version" },
+      "restricted": "pricing", "confidence": 0.95
+    },
+    {
+      "id": "healthfirst-board", "account": "L-1009", "type": "deadline",
+      "summary": "HealthFirst's board decides on the portal on 14 Jul; check in with Anita before it meets.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Dr. Anita Rao (HealthFirst)", "arose": "2026-04-20",
+      "due": { "text": "14 July", "start": "2026-07-14", "end": "2026-07-14" },
+      "quotes": [
+        { "source": "2026-04-20_healthfirst_board_update", "text": "now scheduled for 14 July" },
+        { "source": "2026-07-07_internal_prioritization", "text": "HealthFirst board meets 14 Jul — should we ping Anita before?" }
+      ],
+      "status": "open", "confidence": 0.9
+    },
+    {
+      "id": "healthfirst-under-20k", "account": "L-1009", "type": "budget",
+      "summary": "HealthFirst's board prefers to clear under 20k in one go.",
+      "owedBy": "-", "owedTo": "-", "arose": "2026-04-20",
+      "quotes": [
+        { "source": "2026-04-20_healthfirst_board_update", "text": "Board is more comfortable clearing under 20k in one go." }
+      ],
+      "status": "signal", "confidence": 0.9
+    },
+    {
+      "id": "freshcart-call", "account": "L-1020", "type": "ask",
+      "summary": "Call Ananya at FreshCart: the promised call never happened, she chased on 16 Jun and decides between vendors by mid-July.",
+      "owedBy": "AtliQ (Dhaval)", "owedTo": "Ananya Desai (FreshCart)", "arose": "2026-06-16",
+      "clientDeadline": { "text": "decide by mid-July", "start": "2026-07-10", "end": "2026-07-20", "approximate": true },
+      "quotes": [
+        { "source": "2026-05-18_freshcart_referral_followup", "text": "I'll call you early next week to set things up." },
+        { "source": "2026-05-18_freshcart_referral_followup", "text": "never got that call" },
+        { "source": "2026-05-18_freshcart_referral_followup", "text": "want to decide by mid-July" },
+        { "source": "2026-06-24_acme_quarterly_review", "text": "she confirmed Ananya is expecting our call" }
+      ],
+      "status": "open", "confidence": 0.96
+    },
+    {
+      "id": "zenlytics-slot", "account": "L-1008", "type": "ask",
+      "summary": "Maya offered Tuesday or Wednesday afternoon for the Zenlytics intro call.",
+      "owedBy": "AtliQ (Bhavin)", "owedTo": "Maya Fernandes (Zenlytics)", "arose": "2026-06-04",
+      "quotes": [
+        { "source": "2026-06-03_zenlytics_intro_call", "text": "Tuesday or Wednesday next week works" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-06-05", "source": "2026-06-03_zenlytics_intro_call", "text": "Wednesday 3pm it is." },
+      "confidence": 0.95
+    },
+    {
+      "id": "zenlytics-invite", "account": "L-1008", "type": "promise",
+      "summary": "Send Maya the calendar invite for the Zenlytics intro call you promised on 5 Jun.",
+      "owedBy": "AtliQ (Bhavin)", "owedTo": "Maya Fernandes (Zenlytics)", "arose": "2026-06-05",
+      "quotes": [
+        { "source": "2026-06-03_zenlytics_intro_call", "text": "I'll send a calendar invite shortly." },
+        { "source": "2026-06-03_zenlytics_intro_call", "text": "We're looking for 2 data engineers with dbt + Snowflake experience, ideally starting August." }
+      ],
+      "status": "open", "confidence": 0.96
+    },
+    {
+      "id": "clearpath-revisit", "account": "L-1015", "type": "revisit",
+      "summary": "Reply to Deepa at ClearPath: their budget unfroze and she asked if AtliQ is still interested and whether the 40k estimate holds.",
+      "owedBy": "AtliQ (Dhaval)", "owedTo": "Deepa Nair (ClearPath)", "arose": "2026-06-09",
+      "quotes": [
+        { "source": "2026-06-09_clearpath_budget_unfrozen", "text": "The freeze lifted with the new financial year and the project is back on our roadmap for Q3." },
+        { "source": "2026-06-09_clearpath_budget_unfrozen", "text": "Is AtliQ still interested, and does the 40k estimate still hold?" }
+      ],
+      "status": "open", "opportunity": "ClearPath (budget unfrozen)", "confidence": 0.97
+    },
+    {
+      "id": "sunrise-v2-ask", "account": "L-1026", "type": "ask",
+      "summary": "Meera asked whether AtliQ would build a v2 of the Sunrise Foods distributor portal.",
+      "owedBy": "AtliQ (Dhaval)", "owedTo": "Meera Pillai (Sunrise Foods)", "arose": "2026-06-10",
+      "quotes": [
+        { "source": "2026-06-10_sunrise_foods_reactivation", "text": "would AtliQ want to do a v2?" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-06-14", "source": "2026-06-10_sunrise_foods_reactivation", "text": "Yes, absolutely interested." },
+      "confidence": 0.95
+    },
+    {
+      "id": "sunrise-call", "account": "L-1026", "type": "promise",
+      "summary": "Set up the call with Meera about the Sunrise Foods portal v2 that Dhaval promised on 14 Jun.",
+      "owedBy": "AtliQ (Dhaval)", "owedTo": "Meera Pillai (Sunrise Foods)", "arose": "2026-06-14",
+      "quotes": [
+        { "source": "2026-06-10_sunrise_foods_reactivation", "text": "let me set up a call when I'm back." },
+        { "source": "2026-07-02_internal_pipeline_review", "text": "Sunrise Foods came back wanting a v2 three weeks ago. Still no call scheduled." }
+      ],
+      "status": "open", "opportunity": "Sunrise Foods (portal v2)", "confidence": 0.95
+    },
+    {
+      "id": "sunrise-dashboard", "account": "L-1026", "type": "cross-sell",
+      "summary": "Sunrise Foods' CFO wants portal data in a sales dashboard: raise it on the v2 call.",
+      "owedBy": "-", "owedTo": "-", "arose": "2026-06-10",
+      "quotes": [
+        { "source": "2026-06-10_sunrise_foods_reactivation", "text": "our CFO keeps asking if the portal data can feed into some kind of sales dashboard" }
+      ],
+      "status": "signal", "confidence": 0.85
+    },
+    {
+      "id": "northwind-dash-ask", "account": "L-1005", "type": "ask",
+      "summary": "Tom asked whether AtliQ also builds the dashboard layer on top of Northwind's pipeline.",
+      "owedBy": "AtliQ (Dhaval)", "owedTo": "Tom Beckett (Northwind)", "arose": "2026-06-11",
+      "quotes": [
+        { "source": "2026-06-11_northwind_crosssell", "text": "Does AtliQ also do the dashboard layer on top?" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-06-13", "source": "2026-06-11_northwind_crosssell", "text": "dashboards on top of your existing warehouse would be a small, fast project" },
+      "confidence": 0.95
+    },
+    {
+      "id": "northwind-samples", "account": "L-1005", "type": "promise",
+      "summary": "Send Tom the sample dashboard concepts Dhaval promised for the week of 15 Jun (Northwind cross-sell).",
+      "owedBy": "AtliQ (Dhaval)", "owedTo": "Tom Beckett (Northwind)", "arose": "2026-06-13",
+      "due": { "text": "next week", "start": "2026-06-15", "end": "2026-06-19", "approximate": true },
+      "quotes": [
+        { "source": "2026-06-11_northwind_crosssell", "text": "Let me send you a few sample dashboard concepts next week to react to." }
+      ],
+      "status": "open", "opportunity": "Northwind (dashboards)", "confidence": 0.96
+    },
+    {
+      "id": "volt-why", "account": "L-1014", "type": "ask",
+      "summary": "Marcus asked for an honest case for Power BI and AtliQ over a Tableau consultancy.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Marcus Chen (VoltEnergy)", "arose": "2026-06-15",
+      "quotes": [
+        { "source": "2026-06-15_voltenergy_competitor", "text": "why Power BI, and why AtliQ?" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-06-17", "source": "2026-06-15_voltenergy_competitor", "text": "Where Power BI wins for you is cost at your user count" },
+      "confidence": 0.93
+    },
+    {
+      "id": "volt-tco", "account": "L-1014", "type": "ask",
+      "summary": "Send VoltEnergy the 3-year TCO comparison Marcus asked for 'this week' on 1 Jul (pricing: prepared by a person).",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Marcus Chen (VoltEnergy)", "arose": "2026-07-01",
+      "due": { "text": "this week", "start": "2026-07-03", "end": "2026-07-03" },
+      "quotes": [
+        { "source": "2026-06-15_voltenergy_competitor", "text": "Happy to put both TCOs side by side if useful." },
+        { "source": "2026-06-15_voltenergy_competitor", "text": "board asks for 3-year numbers. Can you send it this week?" }
+      ],
+      "status": "open", "restricted": "pricing", "confidence": 0.95
+    },
+    {
+      "id": "meridian-questions", "account": "L-1003", "type": "ask",
+      "summary": "Answer Sanjay's two Meridian proposal questions (HL7 feeds, whether 14 weeks includes UAT) before their mid-July budget review.",
+      "owedBy": "AtliQ (Bhavin)", "owedTo": "Dr. Sanjay Kulkarni (Meridian)", "arose": "2026-06-16",
+      "clientDeadline": { "text": "mid-July budget review", "start": "2026-07-10", "end": "2026-07-20", "approximate": true },
+      "quotes": [
+        { "source": "2026-06-16_meridian_proposal_questions", "text": "Can the ingestion layer handle HL7 feeds from our older lab systems" },
+        { "source": "2026-06-16_meridian_proposal_questions", "text": "does that include UAT with our clinicians, or is that on top?" },
+        { "source": "2026-06-16_meridian_proposal_questions", "text": "We'd like to close this out before our Q2 budget review in mid-July." },
+        { "source": "2026-07-06_meridian_check", "text": "Nobody sure if we replied to Sanjay's proposal questions from 16 Jun." }
+      ],
+      "status": "open", "confidence": 0.97
+    },
+    {
+      "id": "acme-boardpack-ask", "account": "L-1001", "type": "ask",
+      "summary": "Priya asked whether AtliQ could automate Acme's monthly board reporting pack.",
+      "owedBy": "AtliQ (Dhaval)", "owedTo": "Priya Raman (Acme)", "arose": "2026-06-18",
+      "quotes": [
+        { "source": "2026-06-18_acme_retail_monthly_reports", "text": "Is that something you folks could automate?" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-06-19", "source": "2026-06-18_acme_retail_monthly_reports", "text": "report automation is very doable" },
+      "confidence": 0.94
+    },
+    {
+      "id": "acme-scope-note", "account": "L-1001", "type": "promise",
+      "summary": "Send Priya the report-automation scope note promised on 19 Jun (Ayush named in the QBR, due 27 Jun).",
+      "owedBy": "AtliQ (Dhaval, Ayush)", "owedTo": "Priya Raman (Acme)", "arose": "2026-06-19",
+      "due": { "text": "by 27 Jun", "start": "2026-06-27", "end": "2026-06-27" },
+      "quotes": [
+        { "source": "2026-06-18_acme_retail_monthly_reports", "text": "we'll send you a short scope note this week" },
+        { "source": "2026-06-24_acme_quarterly_review", "text": "Scope note for report automation — Ayush — by 27 Jun" }
+      ],
+      "status": "open", "routedTo": "Ayush", "routeAccepted": true, "opportunity": "Acme (report automation)", "confidence": 0.95
+    },
+    {
+      "id": "acme-forecasting", "account": "L-1001", "type": "cross-sell",
+      "summary": "Set up the forecasting conversation with Acme's COO: seasonal inventory forecasting was raised twice and has no owner in the QBR.",
+      "owedBy": "AtliQ", "owedTo": "Acme COO", "arose": "2026-06-24",
+      "quotes": [
+        { "source": "2026-06-18_acme_retail_monthly_reports", "text": "our ops team has been struggling with inventory forecasting for seasonal SKUs" },
+        { "source": "2026-06-24_acme_quarterly_review", "text": "Intro convo re: forecasting with Acme COO — ?" }
+      ],
+      "status": "open", "opportunity": "Acme (inventory forecasting)", "confidence": 0.86
+    },
+    {
+      "id": "acme-support-renewal", "account": "L-1001", "type": "deadline",
+      "summary": "Acme's support contract renewal is due in September.",
+      "owedBy": "AtliQ (Dhaval)", "owedTo": "Priya Raman (Acme)", "arose": "2026-06-24",
+      "due": { "text": "September", "start": "2026-09-01", "end": "2026-09-30", "approximate": true },
+      "quotes": [
+        { "source": "2026-06-24_acme_quarterly_review", "text": "Renewal of support contract due September." }
+      ],
+      "status": "open", "confidence": 0.85
+    },
+    {
+      "id": "lumino-case-study", "account": "DL-LUMINO", "type": "ask",
+      "summary": "Send Carlos at Lumino Fitness the member-churn case study promised at TechSummit; they are budgeting now.",
+      "owedBy": "AtliQ (Jay)", "owedTo": "Carlos Mendes (Lumino Fitness)", "arose": "2026-06-20",
+      "quotes": [
+        { "source": "2026-06-20_lumino_fitness_case_study", "text": "You mentioned you'd send over the case study about the member-churn prediction work you did for a fitness chain." },
+        { "source": "2026-06-20_lumino_fitness_case_study", "text": "we're budgeting for next quarter right now" }
+      ],
+      "status": "open", "confidence": 0.95
+    },
+    {
+      "id": "cloudnine-ratecard", "account": "L-1025", "type": "ask",
+      "summary": "Dev asked for a rate card for senior backend and DevOps profiles plus two SaaS references.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Dev Malhotra (CloudNine)", "arose": "2026-06-21",
+      "quotes": [
+        { "source": "2026-06-21_cloudnine_rates_references", "text": "your rate card for senior backend and DevOps profiles" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-06-22", "source": "2026-06-21_cloudnine_rates_references", "text": "rate card attached" },
+      "restricted": "pricing", "confidence": 0.94
+    },
+    {
+      "id": "cloudnine-refs", "account": "L-1025", "type": "promise",
+      "summary": "Send Dev the two reference names promised 'in a day or two' on 22 Jun; he chased on 6 Jul and closes by mid-July.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Dev Malhotra (CloudNine)", "arose": "2026-06-22",
+      "due": { "text": "in a day or two", "start": "2026-06-23", "end": "2026-06-24", "approximate": true },
+      "clientDeadline": { "text": "close by mid-July", "start": "2026-07-10", "end": "2026-07-20", "approximate": true },
+      "quotes": [
+        { "source": "2026-06-21_cloudnine_rates_references", "text": "two references we can speak to" },
+        { "source": "2026-06-21_cloudnine_rates_references", "text": "will revert with names in a day or two" },
+        { "source": "2026-06-21_cloudnine_rates_references", "text": "any update on the references?" },
+        { "source": "2026-06-21_cloudnine_rates_references", "text": "want to close this out by mid-July" }
+      ],
+      "status": "open", "confidence": 0.96
+    },
+    {
+      "id": "kaveri-reopen", "account": "L-1007", "type": "revisit",
+      "summary": "Kaveri's replacement vendor failed and Subbu asked if the November quote still holds.",
+      "owedBy": "AtliQ (Jay)", "owedTo": "R. Subramaniam (Kaveri)", "arose": "2026-06-23",
+      "quotes": [
+        { "source": "2026-06-23_kaveri_vendor_failed", "text": "the local vendor we chose over AtliQ last year has not delivered" },
+        { "source": "2026-06-23_kaveri_vendor_failed", "text": "Is your quote from November still valid?" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-06-25", "source": "2026-06-23_kaveri_vendor_failed", "text": "let's do a fresh demo and re-quote rather than dust off the old number" },
+      "opportunity": "Kaveri (vendor failed)", "confidence": 0.95
+    },
+    {
+      "id": "kaveri-demo", "account": "L-1007", "type": "promise",
+      "summary": "Fresh textile dashboard demo for Kaveri on 8 Jul.",
+      "owedBy": "AtliQ (Jay, Pranav)", "owedTo": "R. Subramaniam (Kaveri)", "arose": "2026-06-25",
+      "due": { "text": "8 July", "start": "2026-07-08", "end": "2026-07-08" },
+      "quotes": [
+        { "source": "2026-06-23_kaveri_vendor_failed", "text": "Would 8 July work?" },
+        { "source": "2026-06-23_kaveri_vendor_failed", "text": "8 July confirmed. Bring the template." }
+      ],
+      "status": "done",
+      "done": { "date": "2026-07-08", "source": "2026-07-08_kaveri_demo_round2", "text": "Pranav demoed the textile ops dashboard template" },
+      "confidence": 0.95
+    },
+    {
+      "id": "kaveri-quote", "account": "L-1007", "type": "ask",
+      "summary": "Revised two-plant quote for Kaveri due 15 Jul (pricing: prepared by Jay, not drafted by AI).",
+      "owedBy": "AtliQ (Jay)", "owedTo": "R. Subramaniam (Kaveri)", "arose": "2026-07-08",
+      "due": { "text": "by 15 July", "start": "2026-07-15", "end": "2026-07-15" },
+      "quotes": [
+        { "source": "2026-07-08_kaveri_demo_round2", "text": "Subbu asked for revised quote by 15 July." },
+        { "source": "2026-07-08_kaveri_demo_round2", "text": "Revised quote (2-plant scope) — Jay — by 15 Jul" }
+      ],
+      "status": "open", "restricted": "pricing", "confidence": 0.96
+    },
+    {
+      "id": "globalmart-proposal-may", "account": "L-1004", "type": "ask",
+      "summary": "Neha wanted the GlobalMart vendor-portal proposal by end of May.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Neha Shah (GlobalMart)", "arose": "2026-05-19",
+      "due": { "text": "end of May", "start": "2026-05-29", "end": "2026-05-31", "approximate": true },
+      "quotes": [
+        { "source": "2026-05-19_globalmart_demo", "text": "Neha wants proposal by end of May" }
+      ],
+      "status": "done",
+      "done": { "source": "2026-06-24_globalmart_pricing", "text": "We reviewed internally." },
+      "restricted": "proposal", "confidence": 0.8
+    },
+    {
+      "id": "globalmart-phasing", "account": "L-1004", "type": "ask",
+      "summary": "Neha asked AtliQ to choose: move analytics to Phase 2, or hold full scope at a lower figure.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Neha Shah (GlobalMart)", "arose": "2026-06-24",
+      "quotes": [
+        { "source": "2026-06-24_globalmart_pricing", "text": "trim the analytics module to Phase 2, or hold the full scope at a lower figure. Which works better for you?" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-06-26", "source": "2026-06-24_globalmart_pricing", "text": "let me discuss with the team and come back on the phasing" },
+      "restricted": "pricing", "confidence": 0.94
+    },
+    {
+      "id": "globalmart-phasing-reply", "account": "L-1004", "type": "promise",
+      "summary": "Come back to Neha on GlobalMart phasing, promised by Friday 3 Jul (pricing: decided by a person).",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Neha Shah (GlobalMart)", "arose": "2026-06-26",
+      "due": { "text": "by Friday", "start": "2026-07-03", "end": "2026-07-03" },
+      "quotes": [
+        { "source": "2026-06-24_globalmart_pricing", "text": "(Will respond by Friday.)" }
+      ],
+      "status": "open", "restricted": "pricing", "confidence": 0.94
+    },
+    {
+      "id": "globalmart-forecasting", "account": "L-1004", "type": "cross-sell",
+      "summary": "Answer Neha's side question: does AtliQ do demand forecasting for GlobalMart's supply chain team?",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Neha Shah (GlobalMart)", "arose": "2026-06-24",
+      "quotes": [
+        { "source": "2026-06-24_globalmart_pricing", "text": "my colleague in supply chain asked whether you do demand forecasting. Do you?" }
+      ],
+      "status": "open", "opportunity": "GlobalMart (demand forecasting)", "confidence": 0.92
+    },
+    {
+      "id": "novapharma-refs", "account": "L-1029", "type": "ask",
+      "summary": "Send Emma at NovaPharma three healthcare or pharma references; everything must be wrapped by end of July.",
+      "owedBy": "AtliQ (Bhavin)", "owedTo": "Emma Stone (NovaPharma procurement)", "arose": "2026-06-25",
+      "clientDeadline": { "text": "end of July", "start": "2026-07-31", "end": "2026-07-31" },
+      "quotes": [
+        { "source": "2026-06-25_novapharma_stakeholders", "text": "Emma will need three references from healthcare/pharma clients." },
+        { "source": "2026-06-25_novapharma_stakeholders", "text": "Realistically we need everything wrapped by end of July to make this year's budget." }
+      ],
+      "status": "open", "confidence": 0.94
+    },
+    {
+      "id": "novapharma-questionnaire", "account": "L-1029", "type": "ask",
+      "summary": "NovaPharma's 78-question security questionnaire is due 24 Jul; forwarded to Pranav on 1 Jul with no reply, so nobody owns it.",
+      "owedBy": "AtliQ (Bhavin, routed to Pranav)", "owedTo": "Rajesh Patel (NovaPharma IT security)", "arose": "2026-06-30",
+      "due": { "text": "by 24 July", "start": "2026-07-24", "end": "2026-07-24" },
+      "quotes": [
+        { "source": "2026-06-25_novapharma_stakeholders", "text": "Rajesh needs your data-handling and hosting details before we proceed" },
+        { "source": "2026-06-30_novapharma_security_questionnaire", "text": "78 questions covering data handling, hosting, access control and incident response" },
+        { "source": "2026-06-30_novapharma_security_questionnaire", "text": "We need the completed document back by 24 July" },
+        { "source": "2026-06-30_novapharma_security_questionnaire", "text": "Pranav — can you take a first pass at this?" },
+        { "source": "2026-07-02_internal_pipeline_review", "text": "Who owns it? (Unresolved in meeting.)" },
+        { "source": "2026-07-07_internal_prioritization", "text": "Pranav hasn't responded to the forward" }
+      ],
+      "status": "open", "restricted": "security questionnaire", "routedTo": "Pranav", "routeAccepted": false, "confidence": 0.97
+    },
+    {
+      "id": "novapharma-stakeholders", "account": "L-1029", "type": "stakeholder",
+      "summary": "NovaPharma has three stakeholders: Lisa (science, sold), Rajesh (IT security) and Emma (procurement).",
+      "owedBy": "-", "owedTo": "-", "arose": "2026-06-25",
+      "quotes": [
+        { "source": "2026-06-25_novapharma_stakeholders", "text": "Copying Rajesh (IT security) and Emma (procurement)." },
+        { "source": "2026-06-25_novapharma_stakeholders", "text": "On our side the science team is sold" }
+      ],
+      "status": "signal", "confidence": 0.92
+    },
+    {
+      "id": "harbor-referral", "account": "DL-HARBOR", "type": "referral",
+      "summary": "Reply to David at Harbor & Finch (referred by Suresh, FinEdge): ~120 manual client reports a quarter, asked for a call.",
+      "owedBy": "AtliQ (Bhavin)", "owedTo": "David Harbor (Harbor & Finch)", "arose": "2026-06-27",
+      "quotes": [
+        { "source": "2026-06-27_harborfinch_referral_intro", "text": "they're evaluating options for automating their client reporting" },
+        { "source": "2026-06-27_harborfinch_referral_intro", "text": "We produce ~120 client reports a quarter, all manual. Do you have time in the next couple of weeks?" }
+      ],
+      "status": "open", "opportunity": "Harbor & Finch (referral)", "confidence": 0.96
+    },
+    {
+      "id": "ocean-call-ask", "account": "L-1033", "type": "ask",
+      "summary": "Karl at OceanFreight asked to set up a call (he is on CET).",
+      "owedBy": "AtliQ (Jay)", "owedTo": "Karl Nilsen (OceanFreight)", "arose": "2026-06-28",
+      "quotes": [
+        { "source": "2026-06-28_oceanfreight_timezones", "text": "Can we set up a call? Note I'm on CET." }
+      ],
+      "status": "done",
+      "done": { "date": "2026-06-30", "source": "2026-06-28_oceanfreight_timezones", "text": "Would 2pm IST / 10:30am CET on 2 or 3 July work?" },
+      "confidence": 0.95
+    },
+    {
+      "id": "ocean-reschedule", "account": "L-1033", "type": "ask",
+      "summary": "Karl missed the offered slots and proposed 14 Jul, 8:00 CET.",
+      "owedBy": "AtliQ (Jay)", "owedTo": "Karl Nilsen (OceanFreight)", "arose": "2026-07-02",
+      "quotes": [
+        { "source": "2026-06-28_oceanfreight_timezones", "text": "I'm free the morning of 14 July, 8:00 CET." }
+      ],
+      "status": "done",
+      "done": { "date": "2026-07-03", "source": "2026-06-28_oceanfreight_timezones", "text": "14 July 8:00 CET / 11:30 IST confirmed — invite sent." },
+      "confidence": 0.95
+    },
+    {
+      "id": "ocean-call-14", "account": "L-1033", "type": "deadline",
+      "summary": "OceanFreight discovery call on 14 Jul at 11:30 IST; the CRM record has no owner.",
+      "owedBy": "AtliQ", "owedTo": "Karl Nilsen (OceanFreight)", "arose": "2026-07-03",
+      "due": { "text": "14 July", "start": "2026-07-14", "end": "2026-07-14" },
+      "quotes": [
+        { "source": "2026-06-28_oceanfreight_timezones", "text": "14 July 8:00 CET / 11:30 IST confirmed" }
+      ],
+      "status": "open", "confidence": 0.9
+    },
+    {
+      "id": "pixelworks-partner", "account": "DL-PIXEL", "type": "ask",
+      "summary": "Reply to Tara at PixelWorks: a 30-person agency wants a standing white-label partner (3 to 4 projects a quarter) and asked who to speak with.",
+      "owedBy": "AtliQ (Jay)", "owedTo": "Tara Bose (PixelWorks)", "arose": "2026-06-29",
+      "quotes": [
+        { "source": "2026-06-29_pixelworks_partnership", "text": "we're looking for a standing partner we can white-label" },
+        { "source": "2026-06-29_pixelworks_partnership", "text": "Who's the right person to speak with?" }
+      ],
+      "status": "open", "opportunity": "PixelWorks (partnership)", "confidence": 0.95
+    },
+    {
+      "id": "shopswift-sow", "account": "L-1017", "type": "ask",
+      "summary": "ShopSwift needs a statement of work by 15 Jul or the approved 55k budget slips a quarter (SOW: written by a person).",
+      "owedBy": "AtliQ (Bhavin)", "owedTo": "Elena Petrova (ShopSwift)", "arose": "2026-06-29",
+      "due": { "text": "by 15 July", "start": "2026-07-15", "end": "2026-07-15" },
+      "quotes": [
+        { "source": "2026-06-29_shopswift_budget_confirmed", "text": "leadership has formally approved 55k for the recommendation engine this fiscal year" },
+        { "source": "2026-06-29_shopswift_budget_confirmed", "text": "a statement of work by 15 July" },
+        { "source": "2026-06-29_shopswift_budget_confirmed", "text": "If we miss that window it slips to next quarter" }
+      ],
+      "status": "open", "restricted": "SOW", "confidence": 0.98
+    },
+    {
+      "id": "datanest-renewal", "account": "L-1018", "type": "ask",
+      "summary": "Sameer asked to renew DataNest early and add a third engineer strong on Kafka.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Sameer Kulkarni (DataNest)", "arose": "2026-06-30",
+      "quotes": [
+        { "source": "2026-06-30_datanest_renewal", "text": "Can we sort the renewal early so there's no gap?" },
+        { "source": "2026-06-30_datanest_renewal", "text": "want to add a third engineer, ideally someone strong on Kafka" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-07-02", "source": "2026-06-30_datanest_renewal", "text": "Let's do a call Wednesday 8 July to lock the renewal and discuss the Kafka profile." },
+      "confidence": 0.95
+    },
+    {
+      "id": "datanest-call", "account": "L-1018", "type": "deadline",
+      "summary": "DataNest renewal and Kafka-engineer call was set for 8 Jul; no source records the outcome, so confirm and log it.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Sameer Kulkarni (DataNest)", "arose": "2026-07-02",
+      "due": { "text": "8 July", "start": "2026-07-08", "end": "2026-07-08" },
+      "quotes": [
+        { "source": "2026-06-30_datanest_renewal", "text": "Let's do a call Wednesday 8 July" }
+      ],
+      "status": "open", "confidence": 0.8
+    },
+    {
+      "id": "paytrack-onepager", "account": "L-1013", "type": "ask",
+      "summary": "Send Shreya a one-pager on a PayTrack merchant-risk module before their August planning cycle.",
+      "owedBy": "AtliQ (Bhavin, Ayush)", "owedTo": "Shreya Iyer (PayTrack)", "arose": "2026-07-02",
+      "clientDeadline": { "text": "before August planning", "start": "2026-08-01", "end": "2026-08-01", "approximate": true },
+      "quotes": [
+        { "source": "2026-07-02_paytrack_phase2", "text": "the ops team wants the same scoring applied to merchant onboarding" },
+        { "source": "2026-07-02_paytrack_phase2", "text": "if you sent us a one-pager on what a merchant-risk module would look like, I could circulate it before our August planning cycle" }
+      ],
+      "status": "open", "opportunity": "PayTrack (merchant-risk module)", "confidence": 0.93
+    },
+    {
+      "id": "greengrid-ask", "account": "L-1030", "type": "ask",
+      "summary": "Aditya asked what a solar performance dashboard engagement would look like.",
+      "owedBy": "AtliQ (Jay)", "owedTo": "Aditya Kulkarni (GreenGrid)", "arose": "2026-07-03",
+      "quotes": [
+        { "source": "2026-07-03_greengrid_new_lead", "text": "What would a performance monitoring dashboard engagement look like?" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-07-04", "source": "2026-07-03_greengrid_new_lead", "text": "Shall we do a 45-min discovery call? I have Thursday 9 July open." },
+      "confidence": 0.95
+    },
+    {
+      "id": "greengrid-proposal", "account": "L-1030", "type": "promise",
+      "summary": "GreenGrid proposal due 17 Jul after the 9 Jul discovery call (proposal and pricing: written by Jay).",
+      "owedBy": "AtliQ (Jay)", "owedTo": "Aditya Kulkarni (GreenGrid)", "arose": "2026-07-09",
+      "due": { "text": "by 17 Jul", "start": "2026-07-17", "end": "2026-07-17" },
+      "quotes": [
+        { "source": "2026-07-09_greengrid_discovery", "text": "Proposal — Jay — by 17 Jul" }
+      ],
+      "status": "open", "restricted": "proposal", "confidence": 0.95
+    },
+    {
+      "id": "greengrid-scada", "account": "L-1030", "type": "ask",
+      "summary": "Pranav to check GreenGrid's SCADA API feasibility by 14 Jul, before the quote.",
+      "owedBy": "AtliQ (Pranav)", "owedTo": "Jay (internal)", "arose": "2026-07-09",
+      "due": { "text": "by 14 Jul", "start": "2026-07-14", "end": "2026-07-14" },
+      "quotes": [
+        { "source": "2026-07-09_greengrid_discovery", "text": "Pranav to sanity-check SCADA API feasibility before quote — by 14 Jul" }
+      ],
+      "status": "open", "routedTo": "Pranav", "routeAccepted": true, "confidence": 0.93
+    },
+    {
+      "id": "greengrid-budget", "account": "L-1030", "type": "budget",
+      "summary": "GreenGrid indicated 20 to 25k is comfortable for phase 1; board review in September.",
+      "owedBy": "-", "owedTo": "-", "arose": "2026-07-09",
+      "quotes": [
+        { "source": "2026-07-09_greengrid_discovery", "text": "Aditya indicated 20–25k comfortable for phase 1." },
+        { "source": "2026-07-09_greengrid_discovery", "text": "board review of plant performance in September" }
+      ],
+      "status": "signal", "confidence": 0.92
+    },
+    {
+      "id": "trustline-contract-ask", "account": "L-1032", "type": "ask",
+      "summary": "Trustline's board approved the project; Mohan asked for the revised annual-license contract.",
+      "owedBy": "AtliQ (Dhaval)", "owedTo": "Mohan Krishnan (Trustline)", "arose": "2026-07-03",
+      "quotes": [
+        { "source": "2026-07-03_trustline_approved", "text": "the loan document automation project is approved" },
+        { "source": "2026-07-03_trustline_approved", "text": "Please send the revised contract reflecting that structure and we can sign this month." }
+      ],
+      "status": "done",
+      "done": { "date": "2026-07-06", "source": "2026-07-03_trustline_approved", "text": "Revised contract will be with you this week" },
+      "confidence": 0.96
+    },
+    {
+      "id": "trustline-contract-send", "account": "L-1032", "type": "promise",
+      "summary": "Send Trustline the revised contract promised for this week (contract terms: prepared by a person).",
+      "owedBy": "AtliQ (Dhaval)", "owedTo": "Mohan Krishnan (Trustline)", "arose": "2026-07-06",
+      "due": { "text": "this week", "start": "2026-07-10", "end": "2026-07-10" },
+      "quotes": [
+        { "source": "2026-07-03_trustline_approved", "text": "Revised contract will be with you this week" },
+        { "source": "2026-07-03_trustline_approved", "text": "let's do a short call Thursday 9 July to walk through the terms together" }
+      ],
+      "status": "open", "restricted": "contract terms", "confidence": 0.94
+    },
+    {
+      "id": "nimbus-referral", "account": "DL-NIMBUS", "type": "referral",
+      "summary": "Reply to Rhea at Nimbus Lending (referred by Shreya, PayTrack): ~4,000 manual loan reviews a month, wants a call before 20 Jul.",
+      "owedBy": "AtliQ (Bhavin)", "owedTo": "Rhea Sharma (Nimbus Lending)", "arose": "2026-07-06",
+      "clientDeadline": { "text": "before the week of 20 July", "start": "2026-07-17", "end": "2026-07-17" },
+      "quotes": [
+        { "source": "2026-07-05_nimbus_lending_intro", "text": "we process ~4,000 loan applications a month, all manually reviewed" },
+        { "source": "2026-07-05_nimbus_lending_intro", "text": "I have budget conversations happening the week of 20 July, so a call before then would be ideal." }
+      ],
+      "status": "open", "opportunity": "Nimbus Lending (referral)", "confidence": 0.96
+    },
+    {
+      "id": "citywide-ask", "account": "L-1039", "type": "referral",
+      "summary": "Rakesh (referred by Anita, HealthFirst) asked to talk this month.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Rakesh Gupta (Citywide)", "arose": "2026-07-06",
+      "quotes": [
+        { "source": "2026-07-06_citywide_referral", "text": "Could we talk this month?" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-07-07", "source": "2026-07-06_citywide_referral", "text": "How about Monday 13 July, 11am?" },
+      "confidence": 0.95
+    },
+    {
+      "id": "citywide-call", "account": "L-1039", "type": "deadline",
+      "summary": "Citywide Diagnostics intro call on Mon 13 Jul, 11am; the CRM record has no owner.",
+      "owedBy": "AtliQ", "owedTo": "Rakesh Gupta (Citywide)", "arose": "2026-07-07",
+      "due": { "text": "13 July", "start": "2026-07-13", "end": "2026-07-13" },
+      "quotes": [
+        { "source": "2026-07-06_citywide_referral", "text": "Monday 13th, 11am works. See you then." }
+      ],
+      "status": "open", "confidence": 0.93
+    },
+    {
+      "id": "mirahealth-crm", "account": "L-1038", "type": "ask",
+      "summary": "Log Dhaval's 6 Jul MiraHealth call in the CRM (UK-first scope, ~35k verbal, CTO focused on clinical safety); a CRM proposal is ready.",
+      "owedBy": "AtliQ (Jay)", "owedTo": "Dhaval (internal)", "arose": "2026-07-07",
+      "quotes": [
+        { "source": "2026-07-07_mirahealth_quick_summary", "text": "Can you put this in the CRM? I'll forget half of it by next week." }
+      ],
+      "status": "open", "routedTo": "Jay", "routeAccepted": false, "confidence": 0.9
+    },
+    {
+      "id": "mirahealth-budget", "account": "L-1038", "type": "budget",
+      "summary": "MiraHealth budget of about 35k confirmed verbally; triage assistant scoped for UK ops first.",
+      "owedBy": "-", "owedTo": "-", "arose": "2026-07-07",
+      "quotes": [
+        { "source": "2026-07-07_mirahealth_quick_summary", "text": "Budget ~35k confirmed verbally." },
+        { "source": "2026-07-07_mirahealth_quick_summary", "text": "They want the triage assistant scoped for UK ops first, not India." }
+      ],
+      "status": "signal", "confidence": 0.92
+    },
+    {
+      "id": "mirahealth-cto", "account": "L-1038", "type": "stakeholder",
+      "summary": "MiraHealth's CTO is ex-NHS and particular about clinical safety documentation.",
+      "owedBy": "-", "owedTo": "-", "arose": "2026-07-07",
+      "quotes": [
+        { "source": "2026-07-07_mirahealth_quick_summary", "text": "their CTO is ex-NHS and very particular about clinical safety docs" }
+      ],
+      "status": "signal", "confidence": 0.9
+    },
+    {
+      "id": "eduspark-reply", "account": "L-1010", "type": "ask",
+      "summary": "Reply to Vikram at EduSpark: his 25 Jun website enquiry is unanswered and their budget window closes mid-August.",
+      "owedBy": "AtliQ", "owedTo": "Vikram Joshi (EduSpark)", "arose": "2026-07-08",
+      "clientDeadline": { "text": "budget window closes mid-August", "start": "2026-08-10", "end": "2026-08-20", "approximate": true },
+      "quotes": [
+        { "source": "2026-07-08_eduspark_website_enquiry", "text": "I submitted an enquiry through your website on 25 June about an AI assistant for student queries and haven't heard back" },
+        { "source": "2026-07-08_eduspark_website_enquiry", "text": "our budget window closes mid-August" },
+        { "source": "2026-07-08_eduspark_website_enquiry", "text": "Still interested if you are." }
+      ],
+      "status": "open", "confidence": 0.95
+    },
+    {
+      "id": "eduspark-dean", "account": "L-1010", "type": "stakeholder",
+      "summary": "EduSpark's decision-maker is Prof. Meenakshi Iyer, Dean of Digital Learning; Vikram offered a joint call.",
+      "owedBy": "-", "owedTo": "-", "arose": "2026-07-08",
+      "quotes": [
+        { "source": "2026-07-08_eduspark_website_enquiry", "text": "that's Prof. Meenakshi Iyer, our Dean of Digital Learning" }
+      ],
+      "status": "signal", "confidence": 0.93
+    },
+    {
+      "id": "smartserve-reference", "account": "L-1034", "type": "promise",
+      "summary": "Arrange the reference call with a past client for Arvind at SmartServe (action from the 5 Apr intro).",
+      "owedBy": "AtliQ (Jay)", "owedTo": "Arvind (SmartServe)", "arose": "2026-04-05",
+      "quotes": [
+        { "source": "2026-04-05_smartserve_intro_call", "text": "Reference call with a past client for Arvind — Jay" },
+        { "source": "2026-04-05_smartserve_intro_call", "text": "burned by a previous vendor who disappeared mid-project" }
+      ],
+      "status": "open", "confidence": 0.82
+    },
+    {
+      "id": "medtrack-deck", "account": "L-1016", "type": "promise",
+      "summary": "Send Rohit at MedTrack the intro deck and healthcare case studies promised at TechSummit.",
+      "owedBy": "AtliQ (Jay)", "owedTo": "Rohit Bansal (MedTrack)", "arose": "2026-06-13",
+      "due": { "text": "this week", "start": "2026-06-15", "end": "2026-06-19", "approximate": true },
+      "quotes": [
+        { "source": "2026-06-13_medtrack_scribble", "text": "asked for our intro deck + healthcare case studies" },
+        { "source": "2026-06-13_medtrack_scribble", "text": "send this week" }
+      ],
+      "status": "open", "confidence": 0.88
+    },
+    {
+      "id": "blueorchid-note", "account": "L-1006", "type": "promise",
+      "summary": "Send Farah at BlueOrchid the review-analytics approach note; blocked because her email is not in the CRM.",
+      "owedBy": "AtliQ (Jay)", "owedTo": "Farah Sayed (BlueOrchid)", "arose": "2026-06-19",
+      "quotes": [
+        { "source": "2026-06-19_blueorchid_call", "text": "said I'd send an approach note" },
+        { "source": "2026-06-19_blueorchid_call", "text": "need her email first" },
+        { "source": "2026-06-19_blueorchid_call", "text": "asked what a pilot would cost" }
+      ],
+      "status": "open", "confidence": 0.9
+    },
+    {
+      "id": "loopmart-ballpark", "account": "L-1036", "type": "ask",
+      "summary": "Sania at LoopMart asked for a pricing ballpark at TechSummit.",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Sania Sheikh (LoopMart)", "arose": "2026-06-14",
+      "quotes": [
+        { "source": "2026-06-14_techsummit_debrief", "text": "LoopMart (Sania) — retail analytics, asked for pricing ballpark" }
+      ],
+      "status": "done",
+      "done": { "date": "2026-06-26", "source": "2026-06-26_loopmart_pricing_call", "text": "gave ballpark 18–22k for retail analytics dashboards, phase-able" },
+      "restricted": "pricing", "confidence": 0.9
+    },
+    {
+      "id": "finserve-ping", "account": "L-1002", "type": "promise",
+      "summary": "Ping Arjun at FinServe after 15 Jul, when he is back from travel (credit-scoring ML; explainability matters).",
+      "owedBy": "AtliQ (Karandeep)", "owedTo": "Arjun Mehta (FinServe)", "arose": "2026-06-30",
+      "due": { "text": "after the 15th", "start": "2026-07-16", "end": "2026-07-16", "approximate": true },
+      "quotes": [
+        { "source": "2026-06-30_finserve_intro_call", "text": "arjun travelling first 2 wks of july, said ping him after 15th" },
+        { "source": "2026-06-30_finserve_intro_call", "text": "regulator explainability requirement — big deal for them" }
+      ],
+      "status": "open", "confidence": 0.88
+    },
+    {
+      "id": "agrolink-proposal", "account": "L-1011", "type": "ask",
+      "summary": "AgroLink proposal was due before 10 Jul (today) and is not started; Harpreet goes on leave on the 14th (proposal: written by Dhaval).",
+      "owedBy": "AtliQ (Dhaval)", "owedTo": "Harpreet Gill (AgroLink)", "arose": "2026-07-01",
+      "due": { "text": "before 10 July", "start": "2026-07-10", "end": "2026-07-10" },
+      "quotes": [
+        { "source": "2026-07-01_agrolink_budget_call", "text": "wants proposal before 10 July, he goes on leave 14th" },
+        { "source": "2026-07-01_agrolink_budget_call", "text": "action: proposal — Dhaval — by 10 Jul" }
+      ],
+      "status": "open", "restricted": "proposal", "confidence": 0.96
+    },
+    {
+      "id": "agrolink-budget", "account": "L-1011", "type": "budget",
+      "summary": "AgroLink has about 35 to 40k approved this FY; decision by Harpreet and their CEO, no committee.",
+      "owedBy": "-", "owedTo": "-", "arose": "2026-07-01",
+      "quotes": [
+        { "source": "2026-07-01_agrolink_budget_call", "text": "~35-40k approved for this FY" },
+        { "source": "2026-07-01_agrolink_budget_call", "text": "decision: him + their CEO, no committee" }
+      ],
+      "status": "signal", "confidence": 0.93
+    },
+    {
+      "id": "ridgeline-lead", "account": "DL-RIDGELINE", "type": "ask",
+      "summary": "Ridgeline Foods' ops head (Prakash or Prashant, unsure) wants a distributor portal for ~200 distributors; no contact details were taken.",
+      "owedBy": "AtliQ", "owedTo": "Ridgeline Foods ops head (name unsure)", "arose": "2026-07-03",
+      "quotes": [
+        { "source": "2026-07-03_ridgeline_scribble", "text": "Prakash? Prashant?" },
+        { "source": "2026-07-03_ridgeline_scribble", "text": "wants same thing, distributor ordering portal, ~200 distributors" },
+        { "source": "2026-07-03_ridgeline_scribble", "text": "took no number, no email" }
+      ],
+      "status": "open", "confidence": 0.7
+    }
+  ]
+}
