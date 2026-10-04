@@ -52,12 +52,18 @@ export default function LivePage() {
       <div className="page-head">
         <h1>Live mode</h1>
         <p className="sub">
-          Run the pipeline on a new email or note with the real models: Haiku 4.5 links it to an account, Sonnet 5.5 extracts asks, promises and
-          signals with quotes, and code drops anything whose quote is not in the text. Nothing is written or sent.
+          Run the pipeline on a new email or note with real models: a fast model links it to an account, a stronger model extracts asks, promises
+          and signals with quotes, and code drops anything whose quote is not in the text. Nothing is written or sent.
         </p>
+        {status?.enabled && status.models && (
+          <p className="notice">
+            Provider: {String(status.models.provider)} · fast tier {String(status.models.capture)} (linking, brief lines) · strong tier{" "}
+            {String(status.models.extraction)} (extraction, drafts)
+          </p>
+        )}
         {status && !status.enabled && (
           <p className="notice warn">
-            Live mode is off because ANTHROPIC_API_KEY is not set on the server. Everything else in the app runs on the precomputed, verified
+            Live mode is off because no GROQ_API_KEY or ANTHROPIC_API_KEY is set on the server. Everything else in the app runs on the precomputed, verified
             outputs. To turn it on, set the key as an environment variable (locally or in Vercel project settings) and redeploy.
           </p>
         )}
@@ -129,7 +135,7 @@ export default function LivePage() {
       )}
 
       <h2>2. Rewrite a seller&apos;s brief lines</h2>
-      <p className="sub">Haiku restates ledger facts as one-liners. Ranking stays in code.</p>
+      <p className="sub">The fast model restates ledger facts as one-liners. Ranking stays in code.</p>
       <div className="actions">
         <select value={seller} onChange={(e) => setSeller(e.target.value)} aria-label="Seller">
           {SELLERS.map((s) => (

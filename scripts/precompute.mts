@@ -1,15 +1,15 @@
-// Re-runs F1 linking triage (Haiku 4.5) and F2 extraction (Sonnet 5.5) over every dataset
+// Re-runs F1 linking triage (fast tier) and F2 extraction (strong tier) over every dataset
 // source with the live Claude API, and writes the results to data/precomputed/live-run/
 // for review. Quotes the model returns are checked against the source; failures are dropped.
-// Usage: ANTHROPIC_API_KEY=... npm run precompute
+// Usage: set GROQ_API_KEY (or ANTHROPIC_API_KEY) in the environment, then npm run precompute
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { extract, linkSource, liveEnabled, MODELS } from "../src/lib/llm";
+import { extract, linkSource, liveEnabled, models } from "../src/lib/llm";
 import { memory } from "../src/lib/memory";
 import { norm } from "../src/lib/preprocess";
 
 if (!liveEnabled()) {
-  console.error("Set ANTHROPIC_API_KEY in your environment to run the live pipeline.");
+  console.error("Set GROQ_API_KEY or ANTHROPIC_API_KEY in your environment to run the live pipeline.");
   process.exit(1);
 }
 
@@ -53,7 +53,7 @@ for (const s of m.sources) {
   console.log(`${s.id}: ${out.items.length} items, ${out.crmUpdates.length} CRM updates`);
 }
 
-writeFileSync(join(outDir, "links.json"), JSON.stringify({ model: MODELS.capture, links }, null, 1));
-writeFileSync(join(outDir, "extractions.json"), JSON.stringify({ _meta: { model: MODELS.extraction }, items }, null, 1));
+writeFileSync(join(outDir, "links.json"), JSON.stringify({ model: models().capture, links }, null, 1));
+writeFileSync(join(outDir, "extractions.json"), JSON.stringify({ _meta: { model: models().extraction }, items }, null, 1));
 console.log(`\nWrote ${items.length} items to ${outDir}. ${droppedQuotes} quote(s) failed verification and were dropped.`);
 console.log("Review them, then reconcile into data/precomputed/extractions.json (cross-source merges and completions).");

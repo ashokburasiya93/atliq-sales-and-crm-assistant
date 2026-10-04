@@ -1,7 +1,7 @@
-// Live F1 + F2 for a pasted email or note: Haiku links it, Sonnet extracts, code verifies quotes.
+// Live F1 + F2 for a pasted email or note: the fast tier links it, the strong tier extracts, code verifies quotes.
 import { NextResponse } from "next/server";
 import { addBusinessDays, maxIso, TODAY } from "@/lib/dates";
-import { extract, linkSource, liveEnabled, MAX_SOURCE_CHARS, MODELS } from "@/lib/llm";
+import { extract, linkSource, liveEnabled, MAX_SOURCE_CHARS, models } from "@/lib/llm";
 import { memory } from "@/lib/memory";
 import { norm, stripEditorial } from "@/lib/preprocess";
 
@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 export async function POST(req: Request) {
-  if (!liveEnabled()) return NextResponse.json({ error: "Live mode is off: ANTHROPIC_API_KEY is not set on the server." }, { status: 503 });
+  if (!liveEnabled()) return NextResponse.json({ error: "Live mode is off: no GROQ_API_KEY or ANTHROPIC_API_KEY is set on the server." }, { status: 503 });
   const body = await req.json().catch(() => ({}));
   const raw = typeof body.text === "string" ? body.text : "";
   if (!raw.trim()) return NextResponse.json({ error: "Paste an email or meeting note first." }, { status: 400 });
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     const crmUpdates = out.crmUpdates.filter((u) => src.includes(norm(u.quote)));
 
     return NextResponse.json({
-      models: { link: MODELS.capture, extraction: MODELS.extraction },
+      models: { link: models().capture, extraction: models().extraction },
       link: { ...link, accountName: account?.company ?? null },
       items: kept,
       dropped,

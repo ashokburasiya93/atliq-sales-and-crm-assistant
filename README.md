@@ -29,9 +29,9 @@ The **Evals** page recomputes the PRD's section 11 launch criteria on every buil
 ## Two modes
 
 - **Precomputed (default, no key needed).** The model outputs for the dataset are committed in `data/precomputed/` (`capture.json`, `extractions.json`, `crm_proposals.json`, `drafts.json`). They were produced with Claude during the build and are not trusted blindly: on every build, `scripts/verify.mts` re-checks every quote against the cleaned source text and runs the evals, and the build fails if any shown item is uncited or any draft leaks another client's name or an unsupported amount. Owners, due dates, days waiting, overdue status, ranking, follow-up dates and duplicate detection are computed in code (`src/lib/`).
-- **Live (when `ANTHROPIC_API_KEY` is set on the server).** The *Live mode* page links and extracts a pasted email or note, the *Regenerate (live)* button on any reply draft calls Sonnet with only that account's sources, and you can regenerate a seller's brief lines with Haiku. `npm run precompute` re-runs F1 and F2 over the whole dataset and writes the results to `data/precomputed/live-run/` for review.
+- **Live (when `GROQ_API_KEY` or `ANTHROPIC_API_KEY` is set on the server).** With a Groq key the live features use `openai/gpt-oss-20b` (fast tier: linking, brief lines) and `openai/gpt-oss-120b` (strong tier: extraction, drafts), with strict JSON-schema output; override them with `GROQ_MODEL_FAST` and `GROQ_MODEL_STRONG`. With an Anthropic key they use Haiku 4.5 and Sonnet 5.5 as in the cost estimate. If both are set, Groq wins unless `LLM_PROVIDER=anthropic`. The *Live mode* page links and extracts a pasted email or note, the *Regenerate (live)* button on any reply draft calls Sonnet with only that account's sources, and you can regenerate a seller's brief lines with Haiku. `npm run precompute` re-runs F1 and F2 over the whole dataset and writes the results to `data/precomputed/live-run/` for review.
 
-The key is read only from the environment. Never paste it into the code or commit it; `.env*` files are git-ignored.
+Keys are read only from the environment. Never paste it into the code or commit it; `.env*` files are git-ignored.
 
 ## Run it locally
 
@@ -45,7 +45,7 @@ npm run dev
 
 Open http://localhost:3000. `npm run dev` and `npm run build` first run `scripts/build-data.mts`, which reads `data/dataset/` (a copy of the capstone `Dataset` folder), strips the italic editorial notes, and writes `src/generated/`. `npm run build` also runs `npm run verify`.
 
-To try live mode locally, set the key in your shell before `npm run dev` (PowerShell: `$env:ANTHROPIC_API_KEY="..."`; bash: `export ANTHROPIC_API_KEY=...`).
+To try live mode locally, set the key in your shell before `npm run dev` (PowerShell: `$env:GROQ_API_KEY="..."`; bash: `export GROQ_API_KEY=...`).
 
 ## Deploy to Vercel (free Hobby tier)
 
@@ -55,7 +55,7 @@ npx vercel login
 npx vercel deploy --prod
 ```
 
-Accept the defaults (framework: Next.js, root: this folder). No database or paid add-on is needed. For live mode, add `ANTHROPIC_API_KEY` under the project's Settings > Environment Variables and redeploy; without it the deployed demo runs on the precomputed outputs.
+Accept the defaults (framework: Next.js, root: this folder). No database or paid add-on is needed. For live mode, add `GROQ_API_KEY` (or `ANTHROPIC_API_KEY`) under the project's Settings > Environment Variables and redeploy; without it the deployed demo runs on the precomputed outputs.
 
 Seller decisions (approvals, done/snooze, assignments, the audit log) are stored in the viewer's browser, because the prototype has no database. Approved CRM changes download as `approved_crm_changes.csv`, the PRD's fallback change file until CRM write-back exists. The "Acting as" selector stands in for sign-in.
 

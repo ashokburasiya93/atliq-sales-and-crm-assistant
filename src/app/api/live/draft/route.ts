@@ -1,6 +1,6 @@
-// Live F4 reply draft (Sonnet). Context is one account's sources and ledger rows only.
+// Live F4 reply draft (strong tier). Context is one account's sources and ledger rows only.
 import { NextResponse } from "next/server";
-import { draftReply, liveEnabled, MODELS } from "@/lib/llm";
+import { draftReply, liveEnabled, models } from "@/lib/llm";
 import { memory } from "@/lib/memory";
 import { checkDraft } from "@/lib/safety";
 
@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 export async function POST(req: Request) {
-  if (!liveEnabled()) return NextResponse.json({ error: "Live mode is off: ANTHROPIC_API_KEY is not set on the server." }, { status: 503 });
+  if (!liveEnabled()) return NextResponse.json({ error: "Live mode is off: no GROQ_API_KEY or ANTHROPIC_API_KEY is set on the server." }, { status: 503 });
   const body = await req.json().catch(() => ({}));
   const m = memory();
   const item = m.items.find((i) => i.id === body.item);
@@ -34,9 +34,9 @@ export async function POST(req: Request) {
 
   try {
     const text = await draftReply({ account: account.company, owner: item.owner === "Unassigned" ? "[blank: owner name]" : item.owner, ask: item.summary, context });
-    const draft = { id: `live-${item.id}`, item: item.id, account: item.account, model: MODELS.drafts, text, sources: [...sourceIds] };
+    const draft = { id: `live-${item.id}`, item: item.id, account: item.account, model: models().drafts, text, sources: [...sourceIds] };
     const safety = checkDraft(draft, m.accounts, m.sources);
-    return NextResponse.json({ text, model: MODELS.drafts, safety });
+    return NextResponse.json({ text, model: models().drafts, safety });
   } catch (e) {
     return NextResponse.json({ error: e instanceof Error ? e.message : String(e) }, { status: 502 });
   }

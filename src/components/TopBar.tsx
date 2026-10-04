@@ -43,7 +43,7 @@ export function TopBar() {
           ))}
         </nav>
         <div className="topbar-right">
-          <span className={`chip ${live ? "green" : "grey"}`} title="Live mode needs ANTHROPIC_API_KEY on the server">
+          <span className={`chip ${live ? "green" : "grey"}`} title="Live mode needs GROQ_API_KEY or ANTHROPIC_API_KEY on the server">
             {live ? "Live models on" : "Precomputed outputs"}
           </span>
           <label>
