@@ -212,14 +212,19 @@ export async function extract(source: string, account: string) {
 }
 
 // ---------- F4: reply draft (strong tier) ----------
-export async function draftReply(input: { account: string; owner: string; ask: string; context: string }) {
+export async function draftReply(input: { account: string; owner: string; ask: string; context: string; feedback?: string }) {
   return text(
     "strong",
-    "You draft a short, warm reply email for an AtliQ seller to review, edit and send themselves. You never send anything. " +
+    `You draft a short, warm reply email for an AtliQ seller to review, edit and send themselves. You never send anything. Today is ${TODAY_LABEL}. ` +
       "Use only the account context provided; it contains this one client's records and nothing else. " +
       "Answer the open ask. Apologise briefly if AtliQ is late. Sign with the seller's first name. " +
+      "Never confirm, repeat or change any price, estimate, budget figure or discount: write [blank: confirm the figure] instead. " +
+      "Never state the seller's availability, meeting times or delivery dates: write [blank: proposed dates and times] instead. " +
+      "Never name any other client, person or company that is not in the context. " +
       GROUNDING,
-    `Seller: ${input.owner}\nAccount: ${input.account}\nOpen item: ${input.ask}\n\nAccount context:\n<context>\n${input.context}\n</context>\n\nWrite only the email body.`,
+    `Seller: ${input.owner}\nAccount: ${input.account}\nOpen item: ${input.ask}\n\nAccount context:\n<context>\n${input.context}\n</context>\n\n` +
+      (input.feedback ? `Your previous draft failed the safety check: ${input.feedback}. Fix that.\n\n` : "") +
+      "Write only the email body.",
     4000,
   );
 }
