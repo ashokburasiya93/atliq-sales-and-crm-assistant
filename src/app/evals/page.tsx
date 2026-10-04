@@ -54,12 +54,11 @@ export default function EvalsPage() {
           </ul>
         </details>
       ))}
-      <h2>Model split (Step 4 cost estimate)</h2>
+      <h2>Models</h2>
       <ul className="rule">
-        <li>F1 Capture &amp; Link: {m.models.capture}</li>
-        <li>F2 Ledger extraction and CRM proposals: {m.models.extraction}</li>
-        <li>F3 Brief one-liners: {m.models.brief}; ranking is code</li>
-        <li>F4 Reply drafts: {m.models.drafts}</li>
+        <li>Precomputed outputs on these pages: generated with Claude during the build ({m.models.capture} for linking, {m.models.extraction} for extraction and drafts) and re-verified on every build.</li>
+        <li>Live mode: Groq, openai/gpt-oss-20b for linking triage and openai/gpt-oss-120b for extraction, brief lines and drafts (updated Step 4 cost estimate, 4 Oct 2026).</li>
+        <li>Ranking, due dates, owners and duplicate checks are code, not a model.</li>
       </ul>
     </>
   );

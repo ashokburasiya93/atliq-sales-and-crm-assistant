@@ -1,8 +1,8 @@
 // Live mode: the same pipeline steps the precomputed outputs came from, run against a live model.
 // Two providers, picked by which key is set on the server (LLM_PROVIDER can force one):
 //   Groq      (GROQ_API_KEY):      fast tier openai/gpt-oss-20b, strong tier openai/gpt-oss-120b
-//   Anthropic (ANTHROPIC_API_KEY): fast tier Haiku 4.5, strong tier Sonnet 5.5 (the Step 4 cost estimate)
-// Fast tier -> F1 capture/linking triage, F3 brief one-liners. Strong tier -> F2 extraction, F4 drafts.
+//   Anthropic (ANTHROPIC_API_KEY): fast tier Haiku 4.5, strong tier Sonnet 5.5 (fallback; the original Step 4 plan)
+// Fast tier -> F1 capture/linking triage. Strong tier -> F2 extraction, F3 brief one-liners, F4 drafts.
 // Keys are read only from environment variables on the server; never from the browser or a file.
 import Anthropic from "@anthropic-ai/sdk";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";

@@ -1,5 +1,5 @@
 // Re-runs F1 linking triage (fast tier) and F2 extraction (strong tier) over every dataset
-// source with the live Claude API, and writes the results to data/precomputed/live-run/
+// source with the live models (Groq, or Claude as fallback), and writes the results to data/precomputed/live-run/
 // for review. Quotes the model returns are checked against the source; failures are dropped.
 // Usage: set GROQ_API_KEY (or ANTHROPIC_API_KEY) in the environment, then npm run precompute
 import { mkdirSync, writeFileSync } from "node:fs";

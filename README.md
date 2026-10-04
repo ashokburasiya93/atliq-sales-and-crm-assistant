@@ -1,6 +1,6 @@
 # AtliQ Sales Memory (prototype)
 
-**Live demo:** https://atliq-sales-memory.vercel.app (Vercel Hobby tier, precomputed mode)
+**Live demo:** https://atliq-sales-memory.vercel.app (Vercel Hobby tier; live mode runs on Groq)
 
 Capstone Step 5: a working prototype of the AI PRD *AtliQ Sales Memory*, built over the provided dataset (reference date **Friday 10 July 2026**).
 
@@ -17,21 +17,27 @@ AtliQ does not lack leads; it lacks memory. Client asks, AtliQ promises, deadlin
 
 The **Evals** page recomputes the PRD's section 11 launch criteria on every build (link accuracy, citation faithfulness, extraction recall against PRD Appendix A, date accuracy, brief ranking, draft safety, uncertainty handling) and the North Star baseline.
 
-## Models (matches the Step 4 cost estimate)
+## Tech stack
 
-| Step | Model |
+| Layer | What the prototype uses |
 |---|---|
-| F1 capture and linking triage | `claude-haiku-4-5-20251001` (rules first; the model only resolves what rules cannot) |
-| F2 extraction and CRM proposals | `claude-sonnet-5-5` |
-| F3 brief one-liners | `claude-haiku-4-5-20251001` (ranking is plain code) |
-| F4 reply drafts | `claude-sonnet-5-5` |
+| App | Next.js 15 (App Router), React 19, TypeScript; plain CSS |
+| Hosting | Vercel Hobby (free tier) at https://atliq-sales-memory.vercel.app |
+| Storage | No database. The dataset and the precomputed outputs are committed files; seller decisions and the audit log are kept in the viewer's browser; approved CRM changes export as a CSV change file |
+| Live models | Groq: `openai/gpt-oss-20b` for linking triage, `openai/gpt-oss-120b` for extraction, brief one-liners and reply drafts, with strict JSON-schema output and the same quote and safety checks in code |
+| Fallback models | Claude `claude-haiku-4-5-20251001` and `claude-sonnet-5-5`, used if `ANTHROPIC_API_KEY` is set and `GROQ_API_KEY` is not (or `LLM_PROVIDER=anthropic`) |
+| Embeddings | None. Linking is rules (contact email, email domain, lead_id, company name) plus the triage model |
+| Precomputed outputs | Generated with Claude during the build and re-verified on every build |
+| Tooling | `tsx` scripts for data prep and verification, `zod` for output schemas, Vercel CLI as a dev dependency |
+
+Running cost (updated Step 4 estimate, 4 Oct 2026): about $47 a month for four sellers ($11.72 per seller), of which under $2 is Groq inference. The prototype itself costs $0 to host.
 
 ## Two modes
 
 - **Precomputed (default, no key needed).** The model outputs for the dataset are committed in `data/precomputed/` (`capture.json`, `extractions.json`, `crm_proposals.json`, `drafts.json`). They were produced with Claude during the build and are not trusted blindly: on every build, `scripts/verify.mts` re-checks every quote against the cleaned source text and runs the evals, and the build fails if any shown item is uncited or any draft leaks another client's name or an unsupported amount. Owners, due dates, days waiting, overdue status, ranking, follow-up dates and duplicate detection are computed in code (`src/lib/`).
-- **Live (when `GROQ_API_KEY` or `ANTHROPIC_API_KEY` is set on the server).** With a Groq key the live features use `openai/gpt-oss-20b` for linking and `openai/gpt-oss-120b` for extraction, brief lines and drafts (the 20b model skipped brief items in testing), with strict JSON-schema output; override them with `GROQ_MODEL_FAST` and `GROQ_MODEL_STRONG`. With an Anthropic key they use Haiku 4.5 and Sonnet 5.5 as in the cost estimate. If both are set, Groq wins unless `LLM_PROVIDER=anthropic`. The *Live mode* page links and extracts a pasted email or note, the *Regenerate (live)* button on any reply draft calls Sonnet with only that account's sources, and you can regenerate a seller's brief lines with Haiku. `npm run precompute` re-runs F1 and F2 over the whole dataset and writes the results to `data/precomputed/live-run/` for review.
+- **Live (when `GROQ_API_KEY` or `ANTHROPIC_API_KEY` is set on the server).** With a Groq key the live features use `openai/gpt-oss-20b` for linking and `openai/gpt-oss-120b` for extraction, brief lines and drafts (the 20b model skipped brief items in testing), with strict JSON-schema output; override them with `GROQ_MODEL_FAST` and `GROQ_MODEL_STRONG`. With an Anthropic key they use Haiku 4.5 and Sonnet 5.5, the original Step 4 plan. If both are set, Groq wins unless `LLM_PROVIDER=anthropic`. The *Live mode* page links and extracts a pasted email or note, the *Regenerate (live)* button on any reply draft calls the strong model with only that account's sources, and you can regenerate a seller's brief lines. `npm run precompute` re-runs F1 and F2 over the whole dataset and writes the results to `data/precomputed/live-run/` for review.
 
-Keys are read only from the environment. Never paste it into the code or commit it; `.env*` files are git-ignored.
+Keys are read only from the environment. Never paste one into the code or commit it; `.env*` files are git-ignored.
 
 ## Run it locally
 
@@ -81,6 +87,7 @@ Also listed in the app under *Guardrails*, with the file that enforces each.
 - LoopMart's pricing ask is dated from the TechSummit debrief (14 Jun) rather than the 26 Jun call, so its due date differs from the Appendix label; it shows as a miss in the date-accuracy eval.
 - Unassigned items are listed below the 10-item cap rather than counted inside it.
 - The dataset was not extended.
+- Groq processes data in the US, which conflicts with clients' in-country requirements (FinEdge); this is an open question in the PRD before any real client data is used.
 
 ## Project layout
 
