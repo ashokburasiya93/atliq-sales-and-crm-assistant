@@ -40,7 +40,7 @@ export function liveEnabled(): boolean {
 export function models() {
   const p = provider() ?? "anthropic";
   const m = MODEL_IDS[p];
-  return { provider: p, capture: m.fast, brief: m.fast, extraction: m.strong, drafts: m.strong };
+  return { provider: p, capture: m.fast, brief: m.strong, extraction: m.strong, drafts: m.strong };
 }
 
 // ---------- provider plumbing ----------
@@ -229,13 +229,13 @@ export async function draftReply(input: { account: string; owner: string; ask: s
   );
 }
 
-// ---------- F3: brief one-liners (fast tier) ----------
+// ---------- F3: brief one-liners (strong tier: the fast tier skipped items in testing) ----------
 const SummarySchema = z.object({ lines: z.array(z.object({ id: z.string(), line: z.string() })) });
 
 export async function briefLines(items: { id: string; facts: string }[]) {
   return structured(
-    "fast",
-    "Write one plain-English line per item for a seller's morning brief, under 25 words, starting with the action. " +
+    "strong",
+    "Write exactly one plain-English line for every item listed (same ids, same order) for a seller's morning brief, under 25 words, starting with the action. " +
       "Restate only the facts given. Do not add dates, amounts or names that are not in the facts.",
     items.map((i) => `${i.id}: ${i.facts}`).join("\n"),
     SummarySchema,
