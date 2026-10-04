@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       `type ${i.type}`,
       `owed to ${i.owedTo}`,
       i.dueDate ? `due ${i.dueDate}${i.overdue ? " (overdue)" : ""}` : "",
-      i.dealValue ? `deal value ${i.dealValue} USD` : "",
+      i.openValue ? `open deal value ${i.openValue} USD` : "",
       i.restricted ? `restricted: ${i.restricted}, a person prepares it` : "",
       `source says: "${i.quotes[0].text}"`,
     ]
