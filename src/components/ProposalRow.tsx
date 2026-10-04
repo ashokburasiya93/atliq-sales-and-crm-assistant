@@ -17,7 +17,7 @@ const FIELD_LABEL: Record<string, string> = {
 export function ProposalRow({ p, accountName }: { p: CrmProposal; accountName: string }) {
   const store = useStore();
   const decision = store.decisions[p.id];
-  const [value, setValue] = useState(decision?.value ?? (p.options && !p.proposed ? "" : p.proposed));
+  const [value, setValue] = useState(decision?.value ?? (p.options && (p.field === "merge" || !p.proposed) ? "" : p.proposed));
   const label = `${accountName} ${FIELD_LABEL[p.field] ?? p.field}`;
   const needsChoice = !!p.options && (p.field === "merge" || !p.proposed);
 
