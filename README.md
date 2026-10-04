@@ -1,5 +1,7 @@
 # AtliQ Sales Memory (prototype)
 
+**Live demo:** https://atliq-sales-memory.vercel.app (Vercel Hobby tier, precomputed mode)
+
 Capstone Step 5: a working prototype of the AI PRD *AtliQ Sales Memory*, built over the provided dataset (reference date **Friday 10 July 2026**).
 
 AtliQ does not lack leads; it lacks memory. Client asks, AtliQ promises, deadlines, referrals and revisit dates live in inboxes and meeting scribbles, not in the CRM. This app reads AtliQ's own records, builds a cited ledger of what is owed to whom and by when, gives each seller a ranked morning brief, and proposes CRM updates and reply drafts that a person approves. It never sends anything and never changes the CRM on its own.
