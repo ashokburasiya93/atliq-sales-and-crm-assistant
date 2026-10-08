@@ -1,5 +1,5 @@
 {
-  "name": "atliq-sales-memory",
+  "name": "atliq-sales-and-crm-assistant",
   "version": "0.1.0",
   "private": true,
   "description": "AtliQ Sales and CRM Assistant: grounded commitment ledger, daily brief and approval-gated CRM proposals over the AtliQ dataset.",

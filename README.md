@@ -1,6 +1,6 @@
 # AtliQ Sales and CRM Assistant (prototype)
 
-**Live demo:** https://atliq-sales-memory.vercel.app (Vercel Hobby tier; live mode runs on Groq)
+**Live demo:** https://atliq-sales-and-crm-assistant.vercel.app (Vercel Hobby tier; live mode runs on Groq). The old address, atliq-sales-memory.vercel.app, redirects here.
 
 Capstone Step 5: a working prototype of the AI PRD *AtliQ Sales and CRM Assistant*, built over the provided dataset (reference date **Friday 10 July 2026**).
 
@@ -22,7 +22,7 @@ The **Evals** page recomputes the PRD's section 11 launch criteria on every buil
 | Layer | What the prototype uses |
 |---|---|
 | App | Next.js 15 (App Router), React 19, TypeScript; plain CSS |
-| Hosting | Vercel Hobby (free tier) at https://atliq-sales-memory.vercel.app |
+| Hosting | Vercel Hobby (free tier) at https://atliq-sales-and-crm-assistant.vercel.app |
 | Storage | No database. The dataset and the precomputed outputs are committed files; seller decisions and the audit log are kept in the viewer's browser; approved CRM changes export as a CSV change file |
 | Live models | Groq: `openai/gpt-oss-20b` for linking triage, `openai/gpt-oss-120b` for extraction, brief one-liners and reply drafts, with strict JSON-schema output and the same quote and safety checks in code |
 | Fallback models | Claude `claude-haiku-4-5-20251001` and `claude-sonnet-5-5`, used if `ANTHROPIC_API_KEY` is set and `GROQ_API_KEY` is not (or `LLM_PROVIDER=anthropic`) |
