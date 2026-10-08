@@ -1,4 +1,4 @@
-// Assembles the whole Sales Memory from the dataset and the precomputed model outputs.
+// Assembles the Sales and CRM Assistant's data from the dataset and the precomputed model outputs.
 // Pure and deterministic: the same inputs always give the same ledger, briefs and evals.
 import sourcesJson from "@/generated/sources.json";
 import crmJson from "@/generated/crm.json";

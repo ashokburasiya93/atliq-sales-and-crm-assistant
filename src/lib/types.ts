@@ -1,4 +1,4 @@
-// Shared types for AtliQ Sales Memory.
+// Shared types for AtliQ Sales and CRM Assistant.
 
 export type Seller = "Bhavin" | "Dhaval" | "Karandeep" | "Jay";
 

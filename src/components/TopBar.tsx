@@ -33,7 +33,7 @@ export function TopBar() {
     <header className="topbar">
       <div className="topbar-inner">
         <Link href="/" className="brand">
-          AtliQ Sales Memory<small>prototype</small>
+          AtliQ Sales and CRM Assistant<small>prototype</small>
         </Link>
         <nav className="nav">
           {NAV.map((n) => (

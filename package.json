@@ -2,7 +2,7 @@
   "name": "atliq-sales-memory",
   "version": "0.1.0",
   "private": true,
-  "description": "AtliQ Sales Memory: grounded commitment ledger, daily brief and approval-gated CRM proposals over the AtliQ dataset.",
+  "description": "AtliQ Sales and CRM Assistant: grounded commitment ledger, daily brief and approval-gated CRM proposals over the AtliQ dataset.",
   "scripts": {
     "build-data": "tsx scripts/build-data.mts",
     "verify": "tsx scripts/verify.mts",
