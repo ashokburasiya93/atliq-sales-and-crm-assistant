@@ -11,7 +11,7 @@ Bhavin, following up on Shreya's intro. Our CFO has asked to see a short outline
 type Json = Record<string, unknown>;
 
 export default function LivePage() {
-  const [status, setStatus] = useState<{ enabled: boolean; models?: Json } | null>(null);
+  const [status, setStatus] = useState<{ enabled: boolean; models?: Json; unreachable?: boolean } | null>(null);
   const [text, setText] = useState(SAMPLE);
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<Json | null>(null);
@@ -23,7 +23,7 @@ export default function LivePage() {
     fetch("/api/live")
       .then((r) => r.json())
       .then(setStatus)
-      .catch(() => setStatus({ enabled: false }));
+      .catch(() => setStatus({ enabled: false, unreachable: true }));
   }, []);
 
   async function post(url: string, body: Json) {
@@ -61,7 +61,10 @@ export default function LivePage() {
             {String(status.models.extraction)} (extraction, drafts)
           </p>
         )}
-        {status && !status.enabled && (
+        {status?.unreachable && (
+          <p className="notice warn">Couldn't reach the server to check live mode. Reload the page; if it persists, open https://atliq-sales-and-crm-assistant.vercel.app/live directly.</p>
+        )}
+        {status && !status.enabled && !status.unreachable && (
           <p className="notice warn">
             Live mode is off because no GROQ_API_KEY or ANTHROPIC_API_KEY is set on the server. Everything else in the app runs on the precomputed, verified
             outputs. To turn it on, set the key as an environment variable (locally or in Vercel project settings) and redeploy.
