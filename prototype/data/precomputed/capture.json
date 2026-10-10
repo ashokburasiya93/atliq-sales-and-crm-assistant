@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "step": "F1 Capture & Link (model pass)",
+    "model": "claude-haiku-4-5-20251001",
+    "note": "Deterministic matching (contact email, email domain, lead_id, company name) runs first in code. The model only resolves sources the rules cannot place: new companies, referral intros and doubtful lead_id mentions. Draft leads stay drafts until a seller approves them."
+  },
+  "resolutions": [
+    { "source": "2026-06-27_harborfinch_referral_intro", "state": "new", "primary": "DL-HARBOR", "referrer": "L-1023",
+      "reason": "Intro from Suresh (FinEdge) to David at harborfinch.com, a domain not in the CRM. FinEdge is the referrer, not the account." },
+    { "source": "2026-07-05_nimbus_lending_intro", "state": "new", "primary": "DL-NIMBUS", "referrer": "L-1013",
+      "reason": "Intro from Shreya (PayTrack) to Rhea at nimbuslending.in, a domain not in the CRM. PayTrack is the referrer." },
+    { "source": "2026-06-29_pixelworks_partnership", "state": "new", "primary": "DL-PIXEL",
+      "reason": "Sender domain pixelworks.agency is not in the CRM." },
+    { "source": "2026-06-20_lumino_fitness_case_study", "state": "new", "primary": "DL-LUMINO",
+      "reason": "Sender domain luminofitness.com is not in the CRM; met at TechSummit Mumbai." },
+    { "source": "2026-07-03_ridgeline_scribble", "state": "new", "primary": "DL-RIDGELINE",
+      "reason": "Ridgeline Foods is a new company. Sunrise Foods is mentioned only as how they heard of AtliQ, so it is not the account." },
+    { "source": "2026-06-30_finserve_intro_call", "state": "unsure", "primary": "L-1002",
+      "reason": "Company and contact (FinServe, Arjun) match L-1002, but the note itself doubts the record ('L-1002?'). Confirm before attaching." }
+  ],
+  "leads": [
+    { "id": "DL-HARBOR", "company": "Harbor & Finch Advisory", "contact": "David Harbor", "email": "david@harborfinch.com",
+      "source": "Referral", "referrer": "Suresh Menon (FinEdge Bank, L-1023)", "serviceInterest": "Client reporting automation",
+      "proposedOwner": "Bhavin",
+      "evidence": [
+        { "source": "2026-06-27_harborfinch_referral_intro", "text": "David runs Harbor & Finch, a boutique advisory firm" },
+        { "source": "2026-06-27_harborfinch_referral_intro", "text": "We produce ~120 client reports a quarter, all manual." }
+      ] },
+    { "id": "DL-NIMBUS", "company": "Nimbus Lending", "contact": "Rhea Sharma", "email": "rhea@nimbuslending.in",
+      "source": "Referral", "referrer": "Shreya Iyer (PayTrack, L-1013)", "serviceInterest": "Document-heavy loan underwriting (AI/ML)",
+      "proposedOwner": "Bhavin",
+      "evidence": [
+        { "source": "2026-07-05_nimbus_lending_intro", "text": "meet Rhea, who heads risk at Nimbus Lending" },
+        { "source": "2026-07-05_nimbus_lending_intro", "text": "we process ~4,000 loan applications a month, all manually reviewed" }
+      ] },
+    { "id": "DL-PIXEL", "company": "PixelWorks Agency", "contact": "Tara Bose", "email": "tara@pixelworks.agency",
+      "source": "Inbound email", "referrer": "", "serviceInterest": "White-label partnership: dashboards and AI features",
+      "proposedOwner": "Jay",
+      "evidence": [
+        { "source": "2026-06-29_pixelworks_partnership", "text": "we're a 30-person design agency" },
+        { "source": "2026-06-29_pixelworks_partnership", "text": "Potentially 3–4 projects a quarter." }
+      ] },
+    { "id": "DL-LUMINO", "company": "Lumino Fitness", "contact": "Carlos Mendes", "email": "carlos@luminofitness.com",
+      "source": "Conference", "referrer": "", "serviceInterest": "Member-churn prediction (AI/ML)",
+      "proposedOwner": "Jay",
+      "evidence": [
+        { "source": "2026-06-20_lumino_fitness_case_study", "text": "good meeting you at TechSummit Mumbai last week" },
+        { "source": "2026-06-20_lumino_fitness_case_study", "text": "the member-churn prediction work you did for a fitness chain" }
+      ] },
+    { "id": "DL-RIDGELINE", "company": "Ridgeline Foods", "contact": "Unsure: Prakash or Prashant (ops head)", "email": "",
+      "source": "Inbound call", "referrer": "A distributor shared with Sunrise Foods", "serviceInterest": "Distributor ordering portal (Custom Web App)",
+      "proposedOwner": "", "contactUncertain": ["Prakash", "Prashant"],
+      "evidence": [
+        { "source": "2026-07-03_ridgeline_scribble", "text": "ops head rang the office no. — Prakash? Prashant? — heard about the Sunrise Foods portal from a distributor they share" },
+        { "source": "2026-07-03_ridgeline_scribble", "text": "distributor ordering portal, ~200 distributors" }
+      ] }
+  ]
+}
