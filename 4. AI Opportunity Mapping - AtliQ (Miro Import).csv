@@ -1,0 +1,96 @@
+﻿Frame,Type,Title,Text,Color,Impact,Feasibility,Score,Quadrant
+1 Header,Sticky,Persona,"Bhavin, co-founder & lead seller. Sells between meetings and on the road; owns FinEdge $95k, NovaPharma $80k, ShopSwift $55k, Meridian $45k.",yellow,,,,
+1 Header,Sticky,Root cause,"AtliQ does not lack leads; it lacks memory. Client asks, promises, deadlines, referrals and revisit dates live in emails, calls and notes, never in the CRM, so nobody can see what is owed to whom and by when.",yellow,,,,
+1 Header,Sticky,Evidence,0/40 CRM records have a next follow-up date; 21 have no value; 5 no owner; Meridian duplicated; 4+ email leads and ~11 TechSummit contacts never entered; ~$470k of valued pipeline waiting on an overdue AtliQ action (as of 10 Jul 2026).,yellow,,,,
+1 Header,Sticky,Goal,"Find where AI genuinely helps a founder-seller remember and act, score it, and scope a safe MVP for the PRD.",yellow,,,,
+2 Workflow,Sticky,S1 Lead arrives | Today,"Referrals, LinkedIn, conferences, inbound email, often on the phone between meetings.",gray,,,,
+2 Workflow,Sticky,S1 Lead arrives | Pain,"Harbor & Finch, Nimbus Lending, PixelWorks, Lumino never reached the CRM; ~11 of ~15 TechSummit cards still in a drawer.",red,,,,
+2 Workflow,Sticky,S1 Lead arrives | AI opportunities,"O1, O4, O8, O9",light_green,,,,
+2 Workflow,Sticky,S2 Log & qualify in CRM | Today,"Entered days later, by hand, as name + company, or handed to Jay.",gray,,,,
+2 Workflow,Sticky,S2 Log & qualify in CRM | Pain,"21/40 no value, 5 no owner, Meridian entered twice (L-1003 / L-1027) so Jay pitched Bhavin's prospect.",red,,,,
+2 Workflow,Sticky,S2 Log & qualify in CRM | AI opportunities,"O1, O4, O5, O15",light_green,,,,
+2 Workflow,Sticky,S3 Discovery calls & meetings | Today,"Notes of very uneven quality, from QBR write-ups to two-line scribbles.",gray,,,,
+2 Workflow,Sticky,S3 Discovery calls & meetings | Pain,"Ridgeline Foods called with no contact details; AgroLink notes stuck with Dhaval; MiraHealth: ""put this in the CRM, I'll forget half"".",red,,,,
+2 Workflow,Sticky,S3 Discovery calls & meetings | AI opportunities,"O2, O8",light_green,,,,
+2 Workflow,Sticky,"S4 Proposal, SOW, questionnaire | Today","Pre-sales docs built by founders, Pranav and Ayush, delegated by forwarding emails.",gray,,,,
+2 Workflow,Sticky,"S4 Proposal, SOW, questionnaire | Pain",ShopSwift SOW due 15 Jul not started; NovaPharma 78-question security questionnaire due 24 Jul untouched; Meridian's 16 Jun questions unanswered.,red,,,,
+2 Workflow,Sticky,"S4 Proposal, SOW, questionnaire | AI opportunities","O2, O3, O13, O14",light_green,,,,
+2 Workflow,Sticky,S5 Follow-up & commitments | Today,"Promises made by email or on calls (""I'll send an invite"", ""will revert in a day or two"") with no task.",gray,,,,
+2 Workflow,Sticky,S5 Follow-up & commitments | Pain,"FinEdge call slot unconfirmed 21 days; Zenlytics invite never sent; FreshCart ""never got that call""; CloudNine and ByteBridge comparing competitors.",red,,,,
+2 Workflow,Sticky,S5 Follow-up & commitments | AI opportunities,"O2, O3, O7, O12",light_green,,,,
+2 Workflow,Sticky,S6 Negotiate & close | Today,Status changes live in email; the CRM is not updated.,gray,,,,
+2 Workflow,Sticky,S6 Negotiate & close | Pain,"Trustline approved but still ""Proposal Sent""; HealthFirst board on 14 Jul found only by an inbox search in a meeting.",red,,,,
+2 Workflow,Sticky,S6 Negotiate & close | AI opportunities,"O3, O5, O11",light_green,,,,
+2 Workflow,Sticky,S7 Grow the account | Today,Happy clients ask for more or refer peers; nobody tracks it.,gray,,,,
+2 Workflow,Sticky,S7 Grow the account | Pain,"Northwind dashboard ask, PayTrack phase 2, Acme report automation, DataNest renewal, referrals to Citywide and Harbor & Finch.",red,,,,
+2 Workflow,Sticky,S7 Grow the account | AI opportunities,"O6, O7",light_green,,,,
+2 Workflow,Sticky,S8 Lost deal & revisit | Today,"""Check back later"" is written in a notes field and forgotten.",gray,,,,
+2 Workflow,Sticky,S8 Lost deal & revisit | Pain,"ClearPath budget unfrozen, no reply for 31 days, still ""Lost""; Kaveri's vendor failed; Quantia: check back in Q2 2026; Sunrise Foods wants a v2.",red,,,,
+2 Workflow,Sticky,S8 Lost deal & revisit | AI opportunities,"O5, O6",light_green,,,,
+2 Workflow,Sticky,S9 Pipeline review & prioritisation | Today,Monthly review plus ad-hoc arguments; Jay reconciles CRM vs inboxes first.,gray,,,,
+2 Workflow,Sticky,S9 Pipeline review & prioritisation | Pain,~2 hours of reconciliation per review and still gaps; 7 Jul meeting ended with no owners assigned.,red,,,,
+2 Workflow,Sticky,S9 Pipeline review & prioritisation | AI opportunities,"O3, O5, O10",light_green,,,,
+3 Opportunities,Card,O1 Link conversations to accounts,"Match every email, note and quick note to the right CRM account by company, contact email and lead_id; flag duplicates. Why AI: Fuzzy matching of messy names (""Meridian Health LLC"" vs ""Meridian Healthcare"") is a language task; the join keys exist in the dataset. Evidence: Meridian L-1003/L-1027; GlobalMart L-1004/L-1040 Stage: S1-S2",blue,4,5,20,Do first (MVP)
+3 Opportunities,Card,O2 Commitment & ask ledger,"Extract client asks, AtliQ promises, deadlines, budget and stakeholders from each thread, with a citation to the source line. Why AI: Core LLM strength: structured extraction from unstructured text. Every item can be grounded in a quoted source. Evidence: FinEdge call slot, Meridian questions, ShopSwift SOW 15 Jul, NovaPharma 24 Jul, Zenlytics invite Stage: S3-S5",blue,5,5,25,Do first (MVP)
+3 Opportunities,Card,"O3 Daily ""what needs me today"" brief","Per-seller list ranked by due date, days waiting and deal value, each item linked to its source. Why AI: Ranking is transparent rules on top of O2 output; AI writes the short why-it-matters line. Depends on O2 quality. Evidence: ""We find out what's urgent by accident"" (Karandeep); HealthFirst 14 Jul found by search Stage: S4-S6, S9",blue,5,4,20,Do first (MVP)
+3 Opportunities,Card,O4 Draft new leads from unseen contacts,"When a conversation involves a company not in the CRM, draft a lead (company, contact, source, referrer, interest) for approval. Why AI: Needs entity extraction plus an ""is this new?"" check against the CRM; easy for a human to verify. Evidence: Harbor & Finch (FinEdge referral), Nimbus Lending (PayTrack), PixelWorks, Lumino Fitness Stage: S1-S2",blue,4,4,16,Do first (MVP)
+3 Opportunities,Card,O5 Proposed CRM updates (one-tap approve),"Suggest status, owner, next follow-up date and value changes with the evidence; seller approves or edits. Why AI: Inferring a field value from a conversation is risky if auto-written, safe with approval. Evidence: Trustline ""Proposal Sent"" vs approved; ClearPath ""Lost"" vs re-engaging; 0/40 follow-up dates Stage: S2, S6, S8, S9",blue,4,4,16,Do first (MVP)
+3 Opportunities,Card,O6 Revisit & cross-sell radar,"Spot ""check back in Q_"", budget-unfrozen, second-problem and referral signals; surface them on the right date. Why AI: Signals are implicit in prose (""does AtliQ also do the dashboard layer?""); rules can't catch them, an LLM can, with a citation. Evidence: Northwind dashboards, PayTrack merchant-risk, Acme automation, ClearPath, Kaveri, Quantia Q2 2026 Stage: S7-S8",blue,4,4,16,Do first (MVP)
+3 Opportunities,Card,O7 Reply & follow-up drafts,"Draft a reply that answers the open ask using only facts in AtliQ's records; seller edits and sends. Why AI: LLM drafting is mature; the risk is invented prices or dates, so drafts must cite and leave gaps blank. Evidence: FinEdge slot reply, ClearPath ""does the 40k estimate still hold?"", Sunrise Foods v2 call Stage: S5, S7",blue,3,4,12,Quick add-on
+3 Opportunities,Card,O8 Voice / text quick capture from phone,"Seller speaks or types a 20-second note after a call; AI structures it into the ledger and links the account. Why AI: Speech-to-text plus extraction is mature; needs a mobile surface, which adds build effort for a prototype. Evidence: ""I answer emails on my phone ... by the time I'm at a laptop it's gone"" Stage: S1, S3",blue,4,3,12,Plan next
+3 Opportunities,Card,O9 Business-card scan to lead,"Photo of a conference card becomes a draft lead. Why AI: OCR works, but cards are not in the dataset and volume is a few events a year. Evidence: ~15 TechSummit cards, 4 entered Stage: S1",blue,3,3,9,Park / avoid
+3 Opportunities,Card,O10 Pipeline review pack,"Auto-generated pre-meeting pack: overdue items, unowned deals, missing leads, CRM gaps. Why AI: A different view of O2-O5 output; little new AI work. Saves Jay's ~2 hours. Evidence: 2 Jul review: 2 hours reconciling and still gaps Stage: S9",blue,3,5,15,Quick add-on
+3 Opportunities,Card,O11 Win-probability / lead scoring,"Predict which deals will close. Why AI: 40 records and no outcome history: a model would be guessing. Not where the pain is. Evidence: Pain is forgetting, not choosing (Step 1 root cause) Stage: S6",blue,2,1,2,Park / avoid
+3 Opportunities,Card,O12 Auto-send follow-ups,"Email clients automatically when something is overdue. Why AI: Technically easy, but one wrong price or tone on a $95k deal outweighs the time saved. Founders own the relationship. Evidence: Founder-led sales; relationships are the asset Stage: S5",blue,3,2,6,Park / avoid
+3 Opportunities,Card,O13 Auto-write proposals / SOWs,Generate full SOWs and pricing. Why AI: No pricing or past-SOW corpus in the dataset; high risk of invented scope and price. Evidence: ShopSwift SOW due 15 Jul Stage: S4,blue,3,2,6,Park / avoid
+3 Opportunities,Card,O14 Auto-answer security questionnaires,"Fill the 78-question NovaPharma questionnaire. Why AI: Needs a verified security knowledge base AtliQ hasn't got; wrong answers create legal exposure. Better: flag it and get an owner assigned. Evidence: NovaPharma questionnaire, forwarded to Pranav, untouched Stage: S4",blue,3,2,6,Park / avoid
+3 Opportunities,Card,O15 Web enrichment of contacts,"Scrape LinkedIn / the web to fill contact fields. Why AI: Privacy and terms-of-service risk; the grounded-only principle says stay inside AtliQ's own records. Evidence: Missing contacts for Ridgeline, BlueOrchid, CargoLine Stage: S2",blue,2,2,4,Park / avoid
+4 Scoring,Sticky,Scoring rubric,Impact (1-5): revenue at risk + how often it happens + strength of dataset evidence. Feasibility (1-5): data available in the dataset + maturity of the AI technique + cost of being wrong + prototype build effort. Score = Impact x Feasibility (max 25). Do first = Impact >= 4 and Feasibility >= 4.,yellow,,,,
+5 Impact x Feasibility 2x2,Sticky,O2 Commitment & ask ledger,I5 x F5 = 25,green,5,5,25,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,"O3 Daily ""what needs me today"" brief",I5 x F4 = 20,green,5,4,20,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O1 Link conversations to accounts,I4 x F5 = 20,green,4,5,20,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O4 Draft new leads from unseen contacts,I4 x F4 = 16,green,4,4,16,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O5 Proposed CRM updates (one-tap approve),I4 x F4 = 16,green,4,4,16,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O6 Revisit & cross-sell radar,I4 x F4 = 16,green,4,4,16,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O10 Pipeline review pack,I3 x F5 = 15,light_blue,3,5,15,Quick add-on
+5 Impact x Feasibility 2x2,Sticky,O8 Voice / text quick capture from phone,I4 x F3 = 12,yellow,4,3,12,Plan next
+5 Impact x Feasibility 2x2,Sticky,O7 Reply & follow-up drafts,I3 x F4 = 12,light_blue,3,4,12,Quick add-on
+5 Impact x Feasibility 2x2,Sticky,O9 Business-card scan to lead,I3 x F3 = 9,gray,3,3,9,Park / avoid
+5 Impact x Feasibility 2x2,Sticky,O12 Auto-send follow-ups,I3 x F2 = 6,gray,3,2,6,Park / avoid
+5 Impact x Feasibility 2x2,Sticky,O13 Auto-write proposals / SOWs,I3 x F2 = 6,gray,3,2,6,Park / avoid
+5 Impact x Feasibility 2x2,Sticky,O14 Auto-answer security questionnaires,I3 x F2 = 6,gray,3,2,6,Park / avoid
+5 Impact x Feasibility 2x2,Sticky,O15 Web enrichment of contacts,I2 x F2 = 4,gray,2,2,4,Park / avoid
+5 Impact x Feasibility 2x2,Sticky,O11 Win-probability / lead scoring,I2 x F1 = 2,gray,2,1,2,Park / avoid
+6 Should / Should NOT,Sticky,Should do,"Read AtliQ's own emails, meeting notes and CRM, and nothing else.",green,,,,
+6 Should / Should NOT,Sticky,Should do,Link every conversation to the right account and flag duplicates (Meridian).,green,,,,
+6 Should / Should NOT,Sticky,Should do,"Extract asks, promises, deadlines, referrals, cross-sell hints and revisit dates, each with a source quote.",green,,,,
+6 Should / Should NOT,Sticky,Should do,"Tell each seller every morning what needs them, ranked by due date and deal value.",green,,,,
+6 Should / Should NOT,Sticky,Should do,"Draft new leads, CRM updates and replies for one-tap approval.",green,,,,
+6 Should / Should NOT,Sticky,Should do,"Say it is unsure and show the options when a name, date or match is ambiguous (""Prakash? Prashant?"").",green,,,,
+6 Should / Should NOT,Sticky,Should do,Show unowned work as Unassigned so the team assigns it (NovaPharma questionnaire).,green,,,,
+6 Should / Should NOT,Sticky,Should do,Give the pipeline review a ready-made pack instead of 2 hours of reconciliation.,green,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Send emails or messages to clients on its own.,red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Write to or merge CRM records without a seller's approval.,red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,"Invent prices, discounts, dates, scope or commitments.",red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Answer security questionnaires or write SOWs and pricing (flag and route them instead).,red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Predict win probability or score leads from 40 records.,red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Scrape LinkedIn or the web for contact data.,red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Replace the CRM; it sits on top and keeps it honest.,red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Touch delivery or project-execution work (out of scope per the dataset).,red,,,,
+7 Feature to AI to Guardrails,Table row,F1 Capture & Link,"From: O1, O4 | AI capability: Entity extraction + fuzzy entity resolution (LLM + string similarity on company, email domain, lead_id) | Inputs: Email threads, meeting notes, CRM export | Output: Each source linked to an account; duplicate flags; draft leads for unseen companies | Guardrails: Never merges records automatically; shows match confidence; below threshold it asks (""Meridian Healthcare or Meridian Health LLC?""); new leads are drafts only. | Human in loop: Seller confirms each link, merge and new lead | Test: Link accuracy over all 50 dataset files; must find the Meridian duplicate and the 4 missing email leads",violet,,,,
+7 Feature to AI to Guardrails,Table row,F2 Commitment & Signal Ledger,"From: O2, O6 | AI capability: Structured extraction to a fixed schema (type, who owes, to whom, due date, amount, quote) + date normalisation (""Q4"", ""mid-July"") | Inputs: Linked sources from F1 | Output: One ledger row per ask, promise, deadline, revisit or cross-sell, each with a verbatim source quote | Guardrails: No quote, no item. Never invents dates or amounts; vague dates marked approximate. The dataset's editorial notes are used only as test ground truth, never as input. | Human in loop: Seller can dismiss or edit any item | Test: Recall and precision against a hand-labelled set of ~40 commitments; 0 items without a citation",violet,,,,
+7 Feature to AI to Guardrails,Table row,"F3 Daily Brief (""What needs me today"")","From: O3, O10 | AI capability: Deterministic ranking (due date, days waiting, deal value) + LLM one-line summary per item | Inputs: Ledger (F2) + CRM owner and value | Output: Per-seller ranked list; review-pack view for the pipeline meeting; unowned items flagged | Guardrails: Ranking rules are transparent and shown; summaries only restate ledger facts; unknown owner shown as Unassigned, never guessed. | Human in loop: Seller assigns owners and snoozes items | Test: Bhavin's top 5 on 10 Jul must include FinEdge, ShopSwift, NovaPharma and Meridian",violet,,,,
+7 Feature to AI to Guardrails,Table row,"F4 Propose, never act alone","From: O5, O7 | AI capability: Field-value inference (status, owner, next follow-up) + grounded reply drafting | Inputs: Ledger + CRM record | Output: Suggested CRM changes with evidence; reply drafts with blanks for unknown facts | Guardrails: Nothing is written to the CRM or sent to a client without one-tap approval; drafts contain no price, date or commitment absent from the sources. | Human in loop: Approve, edit or reject every change and draft | Test: Suggestion approval rate; 0 invented facts in a reviewed sample of drafts",violet,,,,
+7 Feature to AI to Guardrails,Table row,Next (post-MVP),From: O8 | AI capability: Speech-to-text + the F2 extraction | Inputs: Phone voice or text note after a call | Output: Structured ledger items | Guardrails: Same as F2; audio not kept after transcription | Human in loop: Seller reviews the structured note | Test: Run once the MVP proves extraction quality,violet,,,,
+8 Guardrails & risks,Sticky,Global guardrail,Grounded only: every output cites a file and a quote from AtliQ's records.,orange,,,,
+8 Guardrails & risks,Sticky,Global guardrail,Human in control: approval before anything changes a record or reaches a client.,orange,,,,
+8 Guardrails & risks,Sticky,Global guardrail,Uncertainty is visible: confidence is shown; low confidence asks rather than guesses.,orange,,,,
+8 Guardrails & risks,Sticky,Global guardrail,Least data: client data stays in AtliQ's workspace; no third-party enrichment; no training on client data.,orange,,,,
+8 Guardrails & risks,Sticky,Global guardrail,"Audit trail: every suggestion, approval and rejection is logged with who and when.",orange,,,,
+8 Guardrails & risks,Sticky,Global guardrail,"Fail safe: a source that can't be read or linked lands in an Unlinked inbox, never silently dropped.",orange,,,,
+8 Guardrails & risks,Sticky,Risk: Wrong account link mixes two clients' facts,Mitigation: Confidence threshold + human confirm; never auto-merge,orange,,,,
+8 Guardrails & risks,Sticky,Risk: Missed commitment gives false comfort,Mitigation: Measure recall on the labelled set; show a sources-scanned count,orange,,,,
+8 Guardrails & risks,Sticky,Risk: Invented date or price in a draft,Mitigation: Citation-required schema; drafts leave blanks; review before send,orange,,,,
+8 Guardrails & risks,Sticky,Risk: Alert fatigue: the brief gets long and ignored,Mitigation: Cap the top items per seller; snooze; rank by urgency x value,orange,,,,
+8 Guardrails & risks,Sticky,Risk: Sellers don't adopt it (like the CRM),Mitigation: It gives back in the moment: the brief is the payoff and capture needs no typing,orange,,,,
+9 Hand-off,Sticky,Step 3 PRD,"Step 3 PRD: North Star candidate = % of client asks and AtliQ commitments actioned within 2 business days (today: FinEdge 21 days, Meridian 24, ClearPath 31). Supporting: pipeline completeness (owner + next step + follow-up date), extraction recall and precision, suggestion approval rate, hours of reconciliation before review.",yellow,,,,

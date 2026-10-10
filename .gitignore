@@ -1,0 +1,24 @@
+# Only the capstone deliverables are published. Templates, course briefs,
+# drafts, recordings and the archive folder stay on this computer.
+/*
+!/.gitignore
+!/README.md
+!/3. Problem Discovery Template - AtliQ (Completed).xlsx
+!/4. AI Opportunity Mapping - AtliQ (Miro Board Content).docx
+!/4. AI Opportunity Mapping - AtliQ (Miro Import).csv
+!/5. AI PRD - AtliQ Sales and CRM Assistant (Completed).docx
+!/6. Cost Estimation - AtliQ Sales and CRM Assistant (Completed).xlsx
+!/7. Presentation - AtliQ Sales and CRM Assistant.pptx
+!/prototype/
+
+# Never commit secrets, build output or recordings
+.env
+.env.*
+!.env.example
+node_modules/
+.next/
+.vercel/
+*.mp4
+*.m4a
+*.mov
+*.wav
